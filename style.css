@@ -98,9 +98,9 @@ a {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
     position: relative;
-    padding: 10px 0;
+    padding: 0;
 }
 
 .hero-content {
@@ -391,11 +391,11 @@ body.theme-light .name {
 }
 
 .code-content {
-    padding: 30px 22px;
+    padding: 20px 22px;
     overflow-x: auto;
     font-family: Consolas, "Courier New", monospace;
     font-size: clamp(0.7rem, 1vw, 0.86rem);
-    line-height: 2.4;
+    line-height: 2.1;
     white-space: nowrap;
     margin-top: -5px;
 }
