@@ -1,0 +1,566 @@
+:root {
+    --background: #080D18;
+    --text: #F1F5F9;
+    --muted: #94A3B8;
+    --blue: #60A5FA;
+    --cyan: #38BDF8;
+    --purple: #A78BFA;
+    --border: rgba(148, 163, 184, 0.16);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100vhs;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+        135deg, 
+        var(--background) 0%, 
+        color-mix(in srgb, var(--background) 70%, #000000) 100%
+    );
+    transition: background 0.3s ease;
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 10%, var(--blue) 0%, transparent 65%);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+    transition: background 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    width: 100%;
+    min-height: 82px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
+
+.logo-icon {
+    color: var(--blue);
+    margin-right: 8px;
+}
+
+.accent {
+    color: var(--cyan);
+}
+
+.nav-label {
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 1.8px;
+}
+
+/* MAIN HERO */
+
+.hero {
+    flex: 1;
+    min-height: 0;
+    width: min(1180px, 84%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    padding: 10px 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: #B7C9E6;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+}
+
+h1 {
+    font-size: clamp(2.8rem, 5.2vw, 4.8rem);
+    line-height: 1.12;
+    letter-spacing: -3px;
+    font-weight: 800;
+}
+
+.name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #f2f5ed;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    cursor: pointer;
+}
+
+.about-image {
+    flex: 0 1 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 280px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+
+   border-color: rgba(59, 130, 246, 0.65);
+
+    box-shadow:
+        0 0 0 12px rgba(59, 130, 246, 0.05),
+        0 0 65px rgba(34, 211, 238, 0.13);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.about-image img:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+
+.gradient-text {
+    display: block;
+    margin-top: 8px;
+    background: linear-gradient(
+        100deg,
+        var(--blue),
+        var(--cyan),
+        var(--purple)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.description {
+    max-width: 510px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* THEME SWITCHER */
+/* Theme 2: Midnight Purple */
+body.theme-purple {
+    --background: #110c1d;
+    --text: #f3e8ff;
+    --muted: #c084fc;
+    --blue: #c084fc;
+    --cyan: #e879f9;
+    --purple: #f472b6;
+    --border: rgba(192, 132, 252, 0.2);
+}
+
+/* Theme 3: Emerald Dark */
+body.theme-emerald {
+    --background: #061a14;
+    --text: #ecfdf5;
+    --muted: #6ee7b7;
+    --blue: #34d399;
+    --cyan: #10b981;
+    --purple: #6ee7b7;
+    --border: rgba(52, 211, 153, 0.2);
+}
+
+/* Theme 4: Soft / Cozy Light Mode (Easy on the eyes) */
+body.theme-light {
+    --background: #f1f5f9;       /* Soft grayish-blue instead of pure blinding white */
+    --text: #1e293b;             /* Deep slate gray for comfortable reading */
+    --muted: #64748b;            /* Balanced secondary text */
+    --blue: #2563eb;             /* Rich professional blue */
+    --cyan: #0284c7;             /* Softer cyan */
+    --purple: #7c3aed;           /* Pleasant purple */
+    --border: rgba(15, 23, 42, 0.1); /* Subtle, non-intrusive borders */
+}
+
+/* Theme 5: Soft Charcoal Dark (Gentle on the eyes, not pitch black) */
+body.theme-midnight {
+    --background: #04060b;       /* Extremely dark obsidian/midnight tone */
+    --text: #cbd5e1;             /* Comfortable muted white text */
+    --muted: #64748b;            /* Soft slate muted text */
+    --blue: #38bdf8;             /* Bright, glowing blue accent */
+    --cyan: #22d3ee;             /* Vibrant cyan */
+    --purple: #a78bfa;           /* Soft purple */
+    --border: rgba(255, 255, 255, 0.08); /* Very subtle, clean border */
+}
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 50px; /* Oblong/pill-shaped style! */
+    padding: 8px 16px;
+    color: var(--text);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* MAIN BUTTON */
+
+.enter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    margin-left: 100px;
+    margin-top: 25px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: var(--blue);
+    color: #08111F;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 8px 30px rgba(96, 165, 250, 0.16);
+    transition: 0.25s ease;
+}
+
+.enter-button:hover {
+    background: #93C5FD;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(96, 165, 250, 0.28);
+}
+
+.arrow {
+    font-size: 1.15rem;
+    transition: transform 0.25s ease;
+}
+
+.enter-button:hover .arrow {
+    transform: translate(3px, -3px);
+}
+
+.footer-note {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    color: #64748B;
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+}
+
+.line {
+    width: 32px;
+    height: 1px;
+    background: var(--blue);
+}
+
+/* DECORATIVE CODE WINDOW */
+
+.code-decoration {
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: var(--background); /* Automatically switches based on your active theme */
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
+    transform: rotate(2deg);
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease; /* Smooth fade effect when changing themes */
+    visibility: visible;
+    max-height: 100%;
+}
+
+.code-decoration:hover {
+    transform: rotate(0deg) translateY(-5px);
+}
+
+.code-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+/* Adjustments specifically for Light Mode readability inside the code box */
+body.theme-light .code-decoration {
+    background: #ffffff;         /* Clean paper-white card */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05); /* Very gentle shadow */
+}
+
+body.theme-light .code-content {
+    color: #1e293b; /* Darker text for readability */
+}
+
+body.theme-light .purple {
+    color: #7c3aed; /* Deeper purple for light mode */
+}
+
+body.theme-light .blue {
+    color: #0284c7; /* Deeper blue for light mode */
+}
+
+body.theme-light .green {
+    color: #0d9488; /* Deeper green for light mode */
+}
+
+body.theme-light .comment {
+    color: #64748b;
+}
+
+body.theme-light .name {
+    color: #0f172a;
+}
+
+.window-dots {
+    display: flex;
+    gap: 7px;
+}
+
+.window-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #F87171;
+}
+
+.window-dots span:nth-child(2) {
+    background: #FBBF24;
+}
+
+.window-dots span:nth-child(3) {
+    background: #34D399;
+}
+
+.code-content {
+    padding: 30px 22px;
+    overflow-x: auto;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: clamp(0.7rem, 1vw, 0.86rem);
+    line-height: 2.4;
+    white-space: nowrap;
+    margin-top: -5px;
+}
+
+.indent {
+    padding-left: 22px;
+}
+
+.purple {
+    color: #C4B5FD;
+}
+
+.blue {
+    color: #7DD3FC;
+}
+
+.green {
+    color: #86EFAC;
+}
+
+.comment {
+    margin-top: 12px;
+    color: #64748B;
+}
+
+/* BACKGROUND EFFECTS */
+
+.background-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(110px);
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+.glow-one {
+    top: 5%;
+    left: 5%;
+    background: #2563EB;
+}
+
+.glow-two {
+    right: 0;
+    bottom: 5%;
+    background: #7C3AED;
+}
+
+.decorative-symbol {
+    position: absolute;
+    color: rgba(96, 165, 250, 0.12);
+    font-family: Consolas, monospace;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+.symbol-one {
+    top: 12%;
+    right: 5%;
+    font-size: 3rem;
+}
+
+.symbol-two {
+    bottom: 15%;
+    left: 42%;
+    font-size: 4rem;
+}
+
+/* FOOTER */
+
+.page-footer {
+    min-height: 55px;
+    padding: 12px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-top: 1px solid var(--border);
+    color: #64748B;
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 55px;
+        padding: 80px 0;
+    }
+
+    .hero-content {
+        max-width: 650px;
+    }
+
+    .code-decoration {
+        width: min(100%, 540px);
+        margin: 0 auto;
+    }
+
+    .footer-note {
+        margin-top: 40px;
+    }
+
+    .symbol-two {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        min-height: 72px;
+        padding: 0 6%;
+    }
+
+    .nav-label {
+        max-width: 120px;
+        text-align: right;
+        font-size: 0.55rem;
+        line-height: 1.7;
+    }
+
+    .hero {
+        width: 88%;
+        gap: 45px;
+        padding: 70px 0;
+    }
+
+    h1 {
+        font-size: clamp(2.6rem, 11vw, 3.5rem);
+        letter-spacing: -1.8px;
+    }
+
+    .description {
+        font-size: 0.92rem;
+    }
+
+    .enter-button {
+        padding: 14px 18px;
+        gap: 14px;
+    }
+
+    .code-content {
+        padding: 24px 14px;
+        font-size: 0.68rem;
+    }
+
+    .page-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px 6%;
+        font-size: 0.6rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto;
+        transition: none;
+    }
+}
