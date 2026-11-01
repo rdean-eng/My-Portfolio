@@ -14,8 +14,10 @@
     box-sizing: border-box;
 }
 
-html {
-    height: 100vhs;
+html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Fixed / Non-Scrolling Layout */
 }
 
 body {
@@ -96,7 +98,7 @@ a {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); /* Expanded second column for code window */
     align-items: center;
-    gap: 30px;
+    gap: 40px;
     position: relative;
     padding: 0;
 }
@@ -130,7 +132,7 @@ a {
 }
 
 .name {
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     letter-spacing: -1px;
     color: #f2f5ed;
@@ -353,13 +355,13 @@ body.theme-light .name {
 }
 
 .code-content {
-    padding: 30px 22px;
-    overflow-x: auto;
+    padding: 18px 22px;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
     font-family: Consolas, "Courier New", monospace;
-    font-size: clamp(0.7rem, 1vw, 0.86rem);
-    line-height: 2.4;
-    white-space: nowrap;
-    margin-top: -5px;
+    font-size: clamp(0.62rem, 0.85vw, 0.8rem); /* Slightly optimized font size to fit long email strings */
+    line-height: 1.8;
+    white-space: normal; /* Allows text wrapping instead of forcing horizontal scroll */
+    word-break: break-all; /* Breaks long strings like email safely */
 }
 
 .indent {
