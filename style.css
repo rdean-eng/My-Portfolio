@@ -15,11 +15,10 @@
 }
 
 html {
-    height: 100vh;
+    height: 100vhs;
 }
 
 body {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     background: linear-gradient(
@@ -30,7 +29,6 @@ body {
     transition: background 0.3s ease;
     color: var(--text);
     font-family: "Segoe UI", Arial, sans-serif;
-    overflow: hidden;
 }
 
 body::before {
@@ -56,7 +54,7 @@ a {
 
 .navbar {
     width: 100%;
-    min-height: 82px;
+    height: 75px;
     padding: 0 8%;
     display: flex;
     align-items: center;
@@ -64,7 +62,7 @@ a {
     border-bottom: 1px solid var(--border);
     position: relative;
     z-index: 2;
-    flex-shrink: 0
+    flex-shrink: 0;
 }
 
 .logo {
@@ -93,10 +91,10 @@ a {
 .hero {
     flex: 1;
     min-height: 0;
-    width: min(1180px, 84%);
+    width: min(1280px, 92%); /* Widened container to fit content safely */
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); /* Expanded second column for code window */
     align-items: center;
     gap: 30px;
     position: relative;
@@ -106,13 +104,17 @@ a {
 .hero-content {
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .eyebrow {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
     color: #B7C9E6;
     font-size: 0.72rem;
     font-weight: 700;
@@ -127,15 +129,8 @@ a {
     box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
 }
 
-h1 {
-    font-size: clamp(2.8rem, 5.2vw, 4.8rem);
-    line-height: 1.12;
-    letter-spacing: -3px;
-    font-weight: 800;
-}
-
 .name {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     font-weight: 800;
     letter-spacing: -1px;
     color: #f2f5ed;
@@ -145,27 +140,22 @@ h1 {
 }
 
 .about-image {
-    flex: 0 1 340px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    margin: 10px 0;
 }
 
 .about-image img {
-    width: 280px;
+    width: clamp(180px, 24vh, 280px);
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 50%;
-
-   border-color: rgba(59, 130, 246, 0.65);
-
+    border-color: rgba(59, 130, 246, 0.65);
     box-shadow:
         0 0 0 12px rgba(59, 130, 246, 0.05),
         0 0 65px rgba(34, 211, 238, 0.13);
-
-    transition:
-        transform 0.4s ease,
-        border-color 0.4s ease;
+    transition: transform 0.4s ease, border-color 0.4s ease;
 }
 
 .about-image img:hover {
@@ -173,31 +163,7 @@ h1 {
     border-color: var(--accent);
 }
 
-
-.gradient-text {
-    display: block;
-    margin-top: 8px;
-    background: linear-gradient(
-        100deg,
-        var(--blue),
-        var(--cyan),
-        var(--purple)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.description {
-    max-width: 510px;
-    margin-top: 18px;
-    color: var(--muted);
-    font-size: 1rem;
-    line-height: 1.7;
-}
-
 /* THEME SWITCHER */
-/* Theme 2: Midnight Purple */
 body.theme-purple {
     --background: #110c1d;
     --text: #f3e8ff;
@@ -208,7 +174,6 @@ body.theme-purple {
     --border: rgba(192, 132, 252, 0.2);
 }
 
-/* Theme 3: Emerald Dark */
 body.theme-emerald {
     --background: #061a14;
     --text: #ecfdf5;
@@ -219,33 +184,31 @@ body.theme-emerald {
     --border: rgba(52, 211, 153, 0.2);
 }
 
-/* Theme 4: Soft / Cozy Light Mode (Easy on the eyes) */
 body.theme-light {
-    --background: #f1f5f9;       /* Soft grayish-blue instead of pure blinding white */
-    --text: #1e293b;             /* Deep slate gray for comfortable reading */
-    --muted: #64748b;            /* Balanced secondary text */
-    --blue: #2563eb;             /* Rich professional blue */
-    --cyan: #0284c7;             /* Softer cyan */
-    --purple: #7c3aed;           /* Pleasant purple */
-    --border: rgba(15, 23, 42, 0.1); /* Subtle, non-intrusive borders */
+    --background: #f1f5f9;
+    --text: #1e293b;
+    --muted: #64748b;
+    --blue: #2563eb;
+    --cyan: #0284c7;
+    --purple: #7c3aed;
+    --border: rgba(15, 23, 42, 0.1);
 }
 
-/* Theme 5: Soft Charcoal Dark (Gentle on the eyes, not pitch black) */
 body.theme-midnight {
-    --background: #04060b;       /* Extremely dark obsidian/midnight tone */
-    --text: #cbd5e1;             /* Comfortable muted white text */
-    --muted: #64748b;            /* Soft slate muted text */
-    --blue: #38bdf8;             /* Bright, glowing blue accent */
-    --cyan: #22d3ee;             /* Vibrant cyan */
-    --purple: #a78bfa;           /* Soft purple */
-    --border: rgba(255, 255, 255, 0.08); /* Very subtle, clean border */
+    --background: #04060b;
+    --text: #cbd5e1;
+    --muted: #64748b;
+    --blue: #38bdf8;
+    --cyan: #22d3ee;
+    --purple: #a78bfa;
+    --border: rgba(255, 255, 255, 0.08);
 }
 
 /* THEME TOGGLE BUTTON */
 .theme-toggle-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border);
-    border-radius: 50px; /* Oblong/pill-shaped style! */
+    border-radius: 50px;
     padding: 8px 16px;
     color: var(--text);
     font-size: 0.8rem;
@@ -268,8 +231,8 @@ body.theme-midnight {
     display: inline-flex;
     align-items: center;
     gap: 22px;
-    margin-left: 100px;
-    margin-top: 25px;
+    margin-top: 15px;
+    margin-left: 0;
     padding: 10px 20px;
     border-radius: 50px;
     background: var(--blue);
@@ -299,7 +262,7 @@ body.theme-midnight {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: 30px;
+    margin-top: 15px;
     color: #64748B;
     font-size: 0.65rem;
     letter-spacing: 1.5px;
@@ -318,12 +281,12 @@ body.theme-midnight {
     z-index: 1;
     border: 1px solid var(--border);
     border-radius: 15px;
-    background: var(--background); /* Automatically switches based on your active theme */
+    background: var(--background);
     box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
     transform: rotate(2deg);
-    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease; /* Smooth fade effect when changing themes */
-    visibility: visible;
-    max-height: 100%;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    max-height: 85vh;
+    overflow: hidden;
 }
 
 .code-decoration:hover {
@@ -334,32 +297,31 @@ body.theme-midnight {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 20px;
+    padding: 14px 20px;
     border-bottom: 1px solid var(--border);
     color: var(--muted);
     font-size: 0.75rem;
 }
 
-/* Adjustments specifically for Light Mode readability inside the code box */
 body.theme-light .code-decoration {
-    background: #ffffff;         /* Clean paper-white card */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05); /* Very gentle shadow */
+    background: #ffffff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
 body.theme-light .code-content {
-    color: #1e293b; /* Darker text for readability */
+    color: #1e293b;
 }
 
 body.theme-light .purple {
-    color: #7c3aed; /* Deeper purple for light mode */
+    color: #7c3aed;
 }
 
 body.theme-light .blue {
-    color: #0284c7; /* Deeper blue for light mode */
+    color: #0284c7;
 }
 
 body.theme-light .green {
-    color: #0d9488; /* Deeper green for light mode */
+    color: #0d9488;
 }
 
 body.theme-light .comment {
@@ -391,17 +353,17 @@ body.theme-light .name {
 }
 
 .code-content {
-    padding: 20px 22px;
+    padding: 30px 22px;
     overflow-x: auto;
     font-family: Consolas, "Courier New", monospace;
     font-size: clamp(0.7rem, 1vw, 0.86rem);
-    line-height: 2.1;
+    line-height: 2.4;
     white-space: nowrap;
     margin-top: -5px;
 }
 
 .indent {
-    padding-left: 22px;
+    padding-left: 18px;
 }
 
 .purple {
@@ -417,7 +379,7 @@ body.theme-light .name {
 }
 
 .comment {
-    margin-top: 12px;
+    margin-top: 8px;
     color: #64748B;
 }
 
@@ -454,22 +416,22 @@ body.theme-light .name {
 }
 
 .symbol-one {
-    top: 12%;
+    top: 10%;
     right: 5%;
     font-size: 3rem;
 }
 
 .symbol-two {
-    bottom: 15%;
-    left: 42%;
+    bottom: 12%;
+    left: 45%;
     font-size: 4rem;
 }
 
 /* FOOTER */
 
 .page-footer {
-    min-height: 55px;
-    padding: 12px 8%;
+    height: 55px;
+    padding: 0 8%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -481,38 +443,36 @@ body.theme-light .name {
     flex-shrink: 0;
 }
 
-
-
 /* RESPONSIVE */
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .hero {
         grid-template-columns: 1fr;
-        gap: 55px;
-        padding: 80px 0;
+        gap: 20px;
+        padding: 10px 6%;
+        text-align: center;
     }
 
     .hero-content {
-        max-width: 650px;
+        align-items: center;
+    }
+
+    .about-image {
+        justify-content: center;
     }
 
     .code-decoration {
-        width: min(100%, 540px);
-        margin: 0 auto;
+        display: none;
     }
 
-    .footer-note {
-        margin-top: 40px;
-    }
-
-    .symbol-two {
+    .symbol-one, .symbol-two {
         display: none;
     }
 }
 
 @media (max-width: 600px) {
     .navbar {
-        min-height: 72px;
+        min-height: 65px;
         padding: 0 6%;
     }
 
@@ -523,36 +483,18 @@ body.theme-light .name {
         line-height: 1.7;
     }
 
-    .hero {
-        width: 88%;
-        gap: 45px;
-        padding: 70px 0;
-    }
-
-    h1 {
-        font-size: clamp(2.6rem, 11vw, 3.5rem);
-        letter-spacing: -1.8px;
-    }
-
-    .description {
-        font-size: 0.92rem;
-    }
-
     .enter-button {
-        padding: 14px 18px;
-        gap: 14px;
-    }
-
-    .code-content {
-        padding: 24px 14px;
-        font-size: 0.68rem;
+        padding: 10px 16px;
+        gap: 12px;
     }
 
     .page-footer {
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
-        padding: 20px 6%;
-        font-size: 0.6rem;
+        justify-content: center;
+        gap: 4px;
+        padding: 8px 6%;
+        font-size: 0.58rem;
     }
 }
 
