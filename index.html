@@ -3,86 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Welcome | My Portfolio</title>
-
+    <title>Robert Dean C. Kiwang | Developer Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="theme-midnight">
 
+    <!-- MATRIX CANVAS BACKGROUND -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- HEADER / NAVIGATION BAR -->
     <header class="navbar">
         <a href="#" class="logo">
             <span class="logo-icon">&lt;/&gt;</span>
             Portfolio<span class="accent">.</span>
         </a>
        
-        <button class="theme-toggle-btn" onclick="cycleTheme()" title="Switch Theme">🎨 Theme</button>
-        
-        <span class="nav-label">DEVELOPER PORTFOLIO</span>
+        <div class="nav-links">
+            <a href="#" class="nav-btn active" onclick="switchTab(event, 'home')">HOME</a>
+            <a href="#" class="nav-btn" onclick="switchTab(event, 'about')">ABOUT ME</a>
+            <a href="#" class="nav-btn" onclick="switchTab(event, 'achievements')">ACHIEVEMENTS</a>
+            <a href="#" class="nav-btn" onclick="switchTab(event, 'education')">EDUCATION</a>
+            <a href="#" class="nav-btn" onclick="switchTab(event, 'family')">FAMILY</a>
+        </div>
+
+        <button class="theme-toggle-btn" id="theme-btn" onclick="cycleTheme()" title="Switch Theme">🎨 Theme</button>
     </header>
 
+    <!-- MAIN FIXED CONTENT AREA -->
     <main class="hero">
 
         <div class="background-glow glow-one"></div>
         <div class="background-glow glow-two"></div>
 
-        <div class="hero-content">
-
-            <div class="eyebrow">
-                <span class="status-dot"></span>
-                WELCOME TO MY SPACE
-            </div>
-
+        <!-- LEFT COLUMN: PHOTO -->
+        <div class="left-col">
             <div class="about-image">
-                <img src="images/photo.jpg" alt="Robert Dean C. Kiwang">
+                <img src="images/photo.jpg" alt="Robert Dean C. Kiwang" onerror="this.src='https://via.placeholder.com/300/1e293b/ffffff?text=Robert+Dean'">
             </div>
-
-            <a href="index2.html" class="enter-button">
-                Explore My Portfolio
-                <span class="arrow">↗</span>
-            </a>
-
-            <div class="footer-note">
-                <span class="line"></span>
-                DESIGNED WITH CURIOSITY. BUILT WITH CODE.
-            </div>
-
         </div>
 
-        <div class="code-decoration" aria-hidden="true">
-            <div class="code-top">
-                <div class="window-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        <!-- RIGHT COLUMN: dynamic tab panels -->
+        <div class="right-col">
+
+            <!-- HOME TAB -->
+            <div id="tab-home" class="tab-panel active">
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    WELCOME TO MY SPACE
                 </div>
-                <span>my-journey.js</span>
-            </div>
-        
-            <div class="code-content">
-                <p class="name">ROBERT DEAN C. KIWANG</p>
-                <p><span class="purple">const</span> myInformation = {</p>
-                <p class="indent"><span class="blue">email</span>: <span class="green">'rck9146@students.uc-bcf.edu.ph'</span>,</p>
-                <p class="indent"><span class="blue">contact</span>: <span class="green">'09691714989'</span>,</p>
-                <p class="indent"><span class="blue">address</span>: <span class="green">'La Trinidad, Benguet, Philippines'</span></p>
-                <p class="indent"><span class="blue">skills</span>: <span class="green">'HTML, CSS, JavaScript, React, Python'</span></p>
-                <p>};</p>
-                <p class="comment">// The journey starts here.</p>
-            </div>
-        </div>
 
-        <span class="decorative-symbol symbol-one">&lt;/&gt;</span>
-        <span class="decorative-symbol symbol-two">{ }</span>
+                <h1 class="hero-name">KIWANG, ROBERT DEAN</h1>
+
+                <div class="badge-group">
+                    <span class="badge">BSCS | Developer</span>
+                </div>
+
+                <p class="hero-subtext">
+                    BACHELOR OF SCIENCE IN COMPUTER SCIENCE STUDENT
+                </p>
+
+                <p class="hero-description">
+                    Welcome to my portfolio! Here you can explore my career path, key achievements, programming skills, educational background, and personal journey.
+                </p>
+
+                <div class="info-pill-container">
+                    <div class="info-pill">
+                        <span class="pill-label">EMAIL:</span>
+                        <a href="mailto:rdwangki@gmail.com?subject=Hello%20Robert&body=Hi%20Robert,%20I%20saw%20your%20portfolio%20and..." class="pill-value">rdwangki@gmail.com</a>
+                    </div>
+                    <div class="info-pill">
+                        <span class="pill-label">LOCATION:</span>
+                        <span class="pill-value">La Trinidad, Benguet, Philippines</span>
+                    </div>
+                </div>
+
+                <div class="social-row">
+                    <span class="connect-label">CONNECT WITH ME:</span>
+                    <a href="https://github.com/rdean-eng" target="_blank" class="social-btn">GITHUB ↗</a>
+                    <a href="https://www.facebook.com/share/1D45oyLNbm/" class="social-btn">FACEBOOK ↗</a>
+                </div>
+            </div>
+
+            <!-- ABOUT TAB -->
+            <div id="tab-about" class="tab-panel">
+                <div class="eyebrow"><span class="status-dot"></span> ABOUT ME</div>
+                <h2 class="panel-title">Passionate Developer & Learner</h2>
+                <div class="panel-box">
+                    <p>I am a Computer Science student at the University of the Cordilleras with a strong interest in building clean, responsive web software and backend solutions.</p>
+                    <br>
+                    <p><strong>Technical Core:</strong> HTML, CSS, JavaScript, React, Python, Java</p>
+                </div>
+            </div>
+
+            <!-- ACHIEVEMENTS TAB -->
+            <div id="tab-achievements" class="tab-panel">
+                <div class="eyebrow"><span class="status-dot"></span> ACHIEVEMENTS</div>
+                <!--<h2 class="panel-title">Projects & Milestones</h2>-->
+                <div class="panel-box">
+                   <!-- <ul class="achievement-list">
+                        <li>⚡ <strong>Bitwise & Radix Converter:</strong> Custom CLI applications engineered in Java.</li>
+                        <li>⚡ <strong>GitHub Developer Portfolio:</strong> Built & deployed responsive portfolio architectures.</li>
+                        <li>⚡ <strong>Algorithmic Flowcharts:</strong> Process optimizations mapped using precise logic flows.</li>
+                    </ul>-->
+                    <h1>Wait!</h1>
+                </div>
+            </div>
+
+            <!-- EDUCATION TAB -->
+            <div id="tab-education" class="tab-panel">
+                <div class="eyebrow"><span class="status-dot"></span> EDUCATION</div>
+                <h2 class="panel-title">Academic Background</h2>
+                <div class="panel-box">
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <p class="text-muted">University of the Cordilleras | CITCS 1-C</p>
+                    <p style="margin-top: 10px;">Focusing on computing fundamentals, data structures, human-computer interaction, and modern Web software engineering.</p>
+                </div>
+            </div>
+
+        </div>
 
     </main>
 
+    <!-- FOOTER -->
     <footer class="page-footer">
-        <span>© 2026 · My Portfolio</span>
+        <span>© 2026 · Robert Dean C. Kiwang</span>
         <span>University of the Cordilleras</span>
         <span>LEARNING · BUILDING · GROWING</span>
     </footer>
 
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
