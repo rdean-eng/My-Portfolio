@@ -315,8 +315,8 @@ a {
 .social-btn {
     border: 1px solid var(--border);
     background: var(--card-bg);
-    padding: 7px 16px;
-    border-radius: 30px;
+    padding: 1px 8px;
+    border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 700;
     transition: 0.2s ease;
@@ -377,3 +377,31 @@ a {
 }
 .glow-one { top: 10%; left: 10%; background: var(--blue); }
 .glow-two { bottom: 10%; right: 10%; background: var(--purple); }
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.page-navigation button {
+    padding: 10px 20px;
+    border: 1px solid var(--blue);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.page-navigation button:hover:not(:disabled) {
+    background: var(--blue);
+    color: white;
+}
+
+.page-navigation button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
