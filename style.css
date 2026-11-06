@@ -185,7 +185,8 @@ a {
 }
 
 .about-image img {
-    width: clamp(350px, 60vh, 450px);
+    width: 100%;
+    max-width: 320px;
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 50%;
