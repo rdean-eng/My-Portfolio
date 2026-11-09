@@ -20,7 +20,7 @@
        
         <div class="nav-links">
             <a href="#" class="nav-btn active" onclick="switchTab(event, 'home')">HOME</a>
-            <a href="#" class="nav-btn" onclick="switchTab(event, 'about')">ABOUT ME</a>
+            <a href="#" class="nav-btn" onclick="switchTab(event, 'about')">PERSONAL INFORMATION</a>
             <a href="#" class="nav-btn" onclick="switchTab(event, 'achievements')">ACHIEVEMENTS</a>
             <a href="#" class="nav-btn" onclick="switchTab(event, 'education')">EDUCATION</a>
             <a href="#" class="nav-btn" onclick="switchTab(event, 'family')">FAMILY</a>
@@ -77,49 +77,142 @@
                     </div>
                 </div>
 
-                <div class="page-navigation" class="right-col">
-                   
-
+                <div class="page-navigation">
                      <button id="next-btn" onclick="navigateTab(1)">
-                      Continue →
+                      Personal Information →
                      </button>
                 </div>
-
-                
             </div>
 
-          <!-- ABOUT TAB -->
+            <!-- ABOUT TAB -->
             <div id="tab-about" class="tab-panel">
-                <div class="eyebrow"><span class="status-dot"></span> ABOUT ME</div>
+                <div class="about-top-row">
+                    <div class="eyebrow"><span class="status-dot"></span> PERSONAL INFORMATION</div>
+                    <div class="about-top-actions">
+                        <button class="about-home-button" type="button" onclick="switchTab(null, 'home')">← Home</button>
+                        <button class="about-achievements-button" type="button" onclick="switchTab(null, 'achievements')">Achievements →</button>
+                    </div>
+                </div>
                 <h2 class="panel-title">Passionate Developer & Learner</h2>
                 <div class="panel-box">
                     <p>I am a Computer Science student at the University of the Cordilleras passionate about continuous learning and exploring different fields of technology, from full-stack development and cybersecurity to game development. I strive to build practical skills, take on new challenges, and grow as a versatile developer.</p>
-                    <br>
-                    <p><strong>Birthday:</strong> April 26, 2008</p>
-                    <p><strong>Age:</strong> 18</p>
-                    <p><strong>Location:</strong> La Trinidad, Benguet, Philippines</p>
-                    <p><strong>College:</strong> University of the Cordilleras</p>
-                    <p><strong>Year Level:</strong> 1st Year</p>
-                    <p><strong>Hobbies:</strong> Continuous Learning, Self-Improvement, Personal Development</p>
-                    <p><strong>Skills:</strong> HTML, CSS, JavaScript, React, Python, Java</p>
+                    <div class="profile-facts" aria-label="Personal details">
+                        <p><strong>Birthday</strong><span>April 26, 2008</span></p>
+                        <p><strong>Age</strong><span>18</span></p>
+                        <p><strong>Location</strong><span>La Trinidad, Benguet, Philippines</span></p>
+                        <p><strong>College</strong><span>University of the Cordilleras</span></p>
+                        <p><strong>Year Level</strong><span>1st Year</span></p>
+                        <p class="fact-wide"><strong>Hobbies</strong><span>Continuous Learning, Self-Improvement, Personal Development</span></p>
+                        <p class="fact-wide"><strong>Skills</strong><span>HTML, CSS, JavaScript, React, Python, Java</span></p>
+                        <p><strong>Status</strong><span>Single</span></p>
+                        <p><strong>Criminal Record</strong><span>None</span></p>
+                        <p><strong>Gender</strong><span>Male</span></p>
+                        <p><strong>Height</strong><span>168.5 cm</span></p>
+                        <p><strong>Weight</strong><span>78 kg</span></p>
+                    </div>
                     <span class="connect-label">CONNECT WITH ME:</span>
                     <a href="https://github.com/rdean-eng" target="_blank" class="social-btn">GITHUB ↗</a>
                     <a href="https://www.facebook.com/share/1D45oyLNbm/" class="social-btn">FACEBOOK ↗</a>
                 </div> 
             </div>
 
-            <!-- ACHIEVEMENTS TAB -->
-            <div id="tab-achievements" class="tab-panel">
-                <div class="eyebrow"><span class="status-dot"></span> ACHIEVEMENTS</div>
-                <!--<h2 class="panel-title">Projects & Milestones</h2>-->
-                <div class="panel-box">
-                     <ul class="achievement-list">
-                        <!--  <li>⚡ <strong>Bitwise & Radix Converter:</strong> Custom CLI applications engineered in Java.</li>
-                        <li>⚡ <strong>GitHub Developer Portfolio:</strong> Built & deployed responsive portfolio architectures.</li>
-                        <li>⚡ <strong>Algorithmic Flowcharts:</strong> Process optimizations mapped using precise logic flows.</li>-->
-                    </ul>
-                    <h1>Wait!</h1>
+            <!-- ACHIEVEMENTS & CERTIFICATES TAB -->
+            <div id="tab-achievements" class="tab-panel achievements-scroll-container">
+                
+                <!-- TOP HEADER ROW -->
+                <div class="achievements-header-row">
+                    <a href="#" class="back-link" onclick="switchTab(event, 'about')">← BACK TO PERSONAL INFORMATION</a>
+                    <h2 class="section-main-title">ACHIEVEMENTS &amp; EXTRACURRICULAR ACTIVITIES</h2>
                 </div>
+
+                <!-- 1. ACHIEVEMENTS GRID (3 Cards) -->
+                <div class="achievement-grid">
+                    
+                    <!-- Achievement 1: Golf Athlete -->
+                    <article class="portfolio-card">
+                        <div class="card-media-box">
+                            <img src="images/Golf.jpg" alt="Privately Sponsored Golf Athlete" loading="lazy">
+                        </div>
+                        <div class="card-content-box">
+                            <h3 class="card-title">PRIVATELY SPONSORED GOLF ATHLETE</h3>
+                            <p class="card-description">Participated in golf as a privately sponsored athlete, developing discipline, sportsmanship, and athletic skills.</p>
+                        </div>
+                    </article>
+
+                    <!-- Achievement 2: Multi-Instrumentalist -->
+                    <article class="portfolio-card">
+                        <div class="card-media-box">
+                            <img src="images/music.jpg" alt="Multi-Instrumentalist-Musician" loading="lazy">
+                        </div>
+                        <div class="card-content-box">
+                            <h3 class="card-title">Multi-Instrumentalist Musician</h3>
+                            <p class="card-description">Plays multiple instruments, including guitar, keyboard, bass, and drums, with a passion for music and continuous learning.</p>
+                        </div>
+                    </article>
+
+                    <!-- Achievement 3: Multi-Instrumentalist (3-Photo Collage) -->
+                    <article class="portfolio-card">
+                        <div class="card-media-box collage-grid">
+                            <div class="collage-main">
+                                <img src="images/gym1.jpg" alt="Fitness-Coach (1/3)" loading="lazy">
+                            </div>
+                            <div class="collage-side">
+                                <img src="images/gym2.jpg" alt="Fitness-Coach (2/3)" loading="lazy">
+                                <img src="images/gym3.jpg" alt="Fitness-Coach (3/3)" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="card-content-box">
+                            <h3 class="card-title">FITNESS COACH</h3>
+                            <p class="card-description">Guided individuals in fitness and strength training, sharing knowledge of exercise techniques and proper training practices.</p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- SECTION DIVIDER -->
+                <div class="section-divider"></div>
+
+                <!-- 2. CERTIFICATES SECTION HEADER -->
+                <div class="achievements-header-row">
+                    <h2 class="section-main-title">CERTIFICATES &amp; CREDENTIALS</h2>
+                </div>
+
+                <!-- CERTIFICATES GRID (6 Cards) -->
+                <div class="certificate-grid">
+                    
+                    <!-- Certificate 1 -->
+                    <article class="portfolio-card">
+                        <div class="card-media-box">
+                            <img src="images/NC2.jpg" alt="Certificate Title 1" loading="lazy">
+                        </div>
+                        <div class="card-content-box">
+                            <h3 class="card-title">COMPUTER SYSTEMS SERVICING NCII</h3>
+                        </div>
+                    </article>
+
+                    <!-- Certificate 2 -->
+                    <article class="portfolio-card">
+                        <div class="card-media-box">
+                            <img src="images/Codecamp.png" alt="Certificate Title 2" loading="lazy">
+                        </div>
+                        <div class="card-content-box">
+                            <h3 class="card-title">RESPONSIVE WEB DESIGN</h3>
+                        </div>
+                    </article>
+
+                    <!-- Certificate 3 -->
+                    <article class="portfolio-card">
+                        <div class="card-media-box">
+                            <img src="images/thework.png" alt="Certificate Title 3" loading="lazy">
+                        </div>
+                        <div class="card-content-box">
+                            <h3 class="card-title">THE WORK BEHIND THE LUCK</h3>
+                        </div>
+                    </article>
+
+                
+                </div>
+
             </div>
 
             <!-- EDUCATION TAB -->
@@ -127,9 +220,6 @@
                 <div class="eyebrow"><span class="status-dot"></span> EDUCATION</div>
                 <h2 class="panel-title">Academic Background</h2>
                 <div class="panel-box">
-                  <!--  <h3>Bachelor of Science in Computer Science</h3>
-                    <p class="text-muted">University of the Cordilleras | CITCS 1-C</p>
-                    <p style="margin-top: 10px;">Focusing on computing fundamentals, data structures, human-computer interaction, and modern Web software engineering.</p>-->
                     <p>Wait! unfinished pa ito HAHA</p>
                 </div>
             </div>
@@ -137,6 +227,15 @@
         </div>
 
     </main>
+
+    <!-- LIGHTBOX MODAL VIEWER -->
+    <div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+            <img id="lightbox-img" src="" alt="Expanded View">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="page-footer">

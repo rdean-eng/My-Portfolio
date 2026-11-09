@@ -1,4 +1,3 @@
-
 // ==========================================
 // THEMES CONFIGURATION
 // ==========================================
@@ -93,6 +92,17 @@ function switchTab(event, tabId) {
         selectedTab.classList.add('active');
     }
 
+    // CONTROL PROFILE PHOTO VISIBILITY
+    // Hides the left column photo specifically on the achievements tab
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        if (tabId === 'achievements') {
+            heroSection.classList.add('hide-photo');
+        } else {
+            heroSection.classList.remove('hide-photo');
+        }
+    }
+
     // Update Previous and Continue buttons
     updateNavigationButtons();
 }
@@ -117,6 +127,27 @@ function navigateTab(direction) {
 
 
 // ==========================================
+// Navigate between portfolio pages with the keyboard arrow keys.
+document.addEventListener('keydown', event => {
+    const target = event.target;
+    const isTyping = target instanceof HTMLElement && (
+        target.isContentEditable ||
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)
+    );
+    const lightbox = document.getElementById('lightbox-modal');
+
+    if (isTyping || lightbox?.classList.contains('active')) {
+        return;
+    }
+
+    if (event.key === 'ArrowLeft' && currentTabIndex > 0) {
+        event.preventDefault();
+        navigateTab(-1);
+    } else if (event.key === 'ArrowRight' && currentTabIndex < tabs.length - 1) {
+        event.preventDefault();
+        navigateTab(1);
+    }
+});
 // UPDATE NAVIGATION BUTTON STATES
 // ==========================================
 
@@ -207,4 +238,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial button states
     updateNavigationButtons();
 
+});
+
+// ==========================================
+// LIGHTBOX EXPAND PHOTO MODAL (FIXED)
+// ==========================================
+
+function openLightbox(imgSrc, captionText) {
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img');
+    const modalCaption = document.getElementById('lightbox-caption');
+
+    if (modal && modalImg && imgSrc) {
+        modalImg.src = imgSrc;
+        modalCaption.textContent = captionText || 'Achievement / Certificate';
+        modal.classList.add('active');
+    }
+}
+
+function closeLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img');
+    if (modal) {
+        modal.classList.remove('active');
+        if (modalImg) modalImg.src = ''; // Clear source on close to prevent ghost previews
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Bind click events to every image inside card media boxes
+    document.querySelectorAll('.card-media-box img').forEach(img => {
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+
+            // Do not open a preview when the image file is missing.
+            if (!img.complete || img.naturalWidth === 0) {
+                return;
+            }
+            
+            // Ensure we grab the actual image source and card title
+            const imgSrc = img.getAttribute('src') || img.src;
+            const card = img.closest('.portfolio-card');
+            const titleEl = card ? card.querySelector('.card-title') : null;
+            const caption = titleEl ? titleEl.textContent.trim() : (img.alt || 'View');
+
+            if (imgSrc) {
+                openLightbox(imgSrc, caption);
+            }
+        });
+    });
+
+    // Close lightbox when pressing the Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
 });

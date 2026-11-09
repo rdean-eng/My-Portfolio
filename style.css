@@ -125,6 +125,10 @@ a {
 .accent { color: var(--cyan); }
 
 .nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
     display: flex;
     gap: 8px;
     background: var(--card-bg);
@@ -141,6 +145,14 @@ a {
     letter-spacing: 1px;
     color: var(--muted);
     transition: 0.25s ease;
+}
+
+@media (max-width: 900px) {
+    .nav-btn {
+        padding: 6px 9px;
+        font-size: 0.64rem;
+        letter-spacing: 0.5px;
+    }
 }
 
 .nav-btn.active, .nav-btn:hover {
@@ -185,13 +197,15 @@ a {
 }
 
 .about-image img {
-    width: clamp(350px, 60vh, 450px);
+    width: 100%;
+    max-width: 320px;
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid var(--blue);
     box-shadow: 0 0 45px var(--glow-color);
 }
+
 
 .right-col {
     position: relative;
@@ -209,6 +223,58 @@ a {
 
 .tab-panel.active {
     display: block;
+}
+
+#tab-about.active {
+    max-height: 100%;
+    overflow: hidden;
+    padding: 2px 10px 2px 0;
+}
+
+.about-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(6px, 1vh, 12px);
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.about-top-row .eyebrow {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.about-top-actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 7px;
+}
+
+.about-home-button,
+.about-achievements-button {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 0.68rem;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.about-home-button:hover,
+.about-achievements-button:hover {
+    border-color: var(--blue);
+    background: var(--glow-color);
+}
+
+.about-achievements-button {
+    border-color: var(--blue);
+    background: var(--blue);
+    color: #07111e;
 }
 
 @keyframes fadeIn {
@@ -341,6 +407,53 @@ a {
     line-height: 1.6;
 }
 
+#tab-about .panel-title {
+    margin-bottom: 10px;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+#tab-about .panel-box {
+    padding: clamp(10px, 1.5vh, 16px);
+    font-size: 0.82rem;
+    line-height: 1.42;
+}
+
+#tab-about .panel-box > p:first-child {
+    line-height: 1.45;
+}
+
+.profile-facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 16px;
+    margin: 8px 0;
+    border-top: 1px solid var(--border);
+}
+
+.profile-facts p {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+    overflow-wrap: anywhere;
+    font-size: 0.76rem;
+    line-height: 1.28;
+}
+
+.profile-facts .fact-wide {
+    grid-column: 1 / -1;
+}
+
+.profile-facts strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.profile-facts span {
+    color: var(--muted);
+}
+
 .achievement-list {
     list-style: none;
     display: flex;
@@ -356,7 +469,8 @@ a {
     padding: 0 5%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: clamp(6px, 1vh, 12px);
     border-top: 1px solid var(--border);
     color: var(--muted);
     font-size: 0.68rem;
@@ -380,7 +494,8 @@ a {
 
 .page-navigation {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: clamp(6px, 1vh, 12px);
     align-items: center;
     gap: 15px;
     margin-top: 25px;
@@ -404,4 +519,360 @@ a {
 .page-navigation button:disabled {
     opacity: 0.35;
     cursor: not-allowed;
+}
+
+/* Hide photo state for specific tabs */
+.hero.hide-photo {
+    grid-template-columns: 1fr !important;
+}
+
+.hero.hide-photo .left-col {
+    display: none !important;
+}
+
+/* =================================================
+   FLUID VIEWPORT-FIT ACHIEVEMENTS & CERTIFICATES
+   (Fits cleanly inside 100dvh on any monitor)
+   ================================================= */
+
+.right-col {
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#tab-achievements.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(3px, 0.5vh, 7px);
+    height: 100%;
+    max-height: 100%;
+    padding: clamp(4px, 0.7vh, 8px) 0;
+    overflow: hidden;
+}
+
+/* Header Row */
+.achievements-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: clamp(4px, 0.6vh, 8px);
+    flex-shrink: 0;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: clamp(0.65rem, 0.75vw, 0.72rem);
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    padding: 4px 12px;
+    border-radius: 20px;
+    transition: 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--text);
+    border-color: var(--blue);
+    background: var(--glow-color);
+}
+
+.section-main-title {
+    font-size: clamp(0.85rem, 1.4vw, 1.15rem);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--text);
+}
+
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* Use the available certificate cards as the grid columns so there are no blank slots. */
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(10px, 1.5vw, 18px);
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.certificate-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(8px, 1.2vw, 14px);
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* Card Styling */
+.portfolio-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--blue);
+    box-shadow: 0 6px 20px var(--glow-color);
+}
+
+/* Fluid Media Heights Scaled to Monitor Viewport (vh) */
+.achievement-grid .card-media-box,
+.achievement-grid .collage-grid {
+    width: 100%;
+    height: clamp(88px, 15vh, 130px);
+    background: rgba(15, 23, 42, 0.85);
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+}
+
+.certificate-grid .card-media-box {
+    width: 100%;
+    height: clamp(48px, 7vh, 64px);
+    background: rgba(15, 23, 42, 0.85);
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+}
+
+.certificate-grid .card-media-box img {
+    object-fit: contain;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.card-media-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    font-size: 0.7rem;
+    color: var(--muted);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover .card-media-box img {
+    transform: scale(1.04);
+}
+
+/* Multi-Instrumentalist 3-Photo Collage */
+.collage-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 2px;
+}
+
+.collage-main,
+.collage-side {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.collage-side {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 2px;
+}
+
+.collage-main img,
+.collage-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Compact Card Titles */
+.card-content-box {
+    padding: clamp(5px, 0.7vh, 8px) 9px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.achievement-grid .card-title {
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+}
+
+.achievement-grid .card-description {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: clamp(0.88rem, 0.95vw, 1rem);
+    line-height: 1.55;
+    max-width: 38ch;
+}
+
+.certificate-grid .card-title {
+    font-size: clamp(0.72rem, 0.82vw, 0.82rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+}
+
+/* =================================================
+   TABLET & MOBILE COMPACT LAYOUT
+   (Keeps all sections visible without scrolling)
+   ================================================= */
+@media (max-width: 1024px) {
+    #tab-achievements.active {
+        overflow: hidden;
+        justify-content: space-between;
+        gap: 6px;
+        padding-right: 6px;
+    }
+
+    .achievement-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .certificate-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .achievements-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 4px;
+    }
+
+    .achievement-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 5px;
+    }
+
+    .certificate-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+    }
+
+    .certificate-grid .card-media-box {
+        height: clamp(48px, 8vh, 68px);
+    }
+
+    .profile-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 12px;
+    }
+
+    .profile-facts p {
+        font-size: 0.74rem;
+    }
+
+    .profile-facts .fact-wide {
+        grid-column: 1 / -1;
+    }
+
+    .about-top-row {
+        flex-wrap: wrap;
+        row-gap: 6px;
+    }
+
+    .about-top-actions {
+        margin-left: auto;
+    }
+}
+
+@media (max-height: 760px) {
+    #tab-about .panel-title {
+        margin-bottom: 6px;
+    }
+
+    #tab-about .panel-box {
+        padding: 9px 12px;
+        font-size: 0.78rem;
+        line-height: 1.3;
+    }
+
+    #tab-about .panel-box > p:first-child {
+        line-height: 1.32;
+    }
+
+    .profile-facts {
+        margin: 6px 0;
+    }
+
+    .profile-facts p {
+        padding: 3px 0;
+    }
+
+}
+
+/* LIGHTBOX */
+.lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.88);
+}
+
+.lightbox-modal.active {
+    display: flex;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: min(92vw, 1100px);
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-content img {
+    display: block;
+    max-width: 100%;
+    max-height: 82vh;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    background: #111827;
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.lightbox-caption {
+    padding-top: 10px;
+    color: #fff;
+    text-align: center;
 }
