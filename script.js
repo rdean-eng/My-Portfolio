@@ -295,3 +295,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// OPEN/CLOSE THE PORTFOLIO FOLDER POP-UPS
+function openPortfolioDialog(dialogId) {
+    const dialog = document.getElementById(dialogId);
+    if (dialog && !dialog.open) dialog.showModal();
+}
+
+function closePortfolioDialog(dialogId) {
+    const dialog = document.getElementById(dialogId);
+    if (dialog?.open) dialog.close();
+}
+
+document.querySelectorAll('.portfolio-dialog').forEach(dialog => {
+    dialog.addEventListener('click', event => {
+        if (event.target === dialog) dialog.close();
+    });
+});

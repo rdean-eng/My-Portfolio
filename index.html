@@ -22,8 +22,7 @@
             <a href="#" class="nav-btn active" onclick="switchTab(event, 'home')">HOME</a>
             <a href="#" class="nav-btn" onclick="switchTab(event, 'about')">PERSONAL INFORMATION</a>
             <a href="#" class="nav-btn" onclick="switchTab(event, 'achievements')">ACHIEVEMENTS</a>
-            <a href="#" class="nav-btn" onclick="switchTab(event, 'education')">EDUCATION</a>
-            <a href="#" class="nav-btn" onclick="switchTab(event, 'family')">FAMILY</a>
+            <a href="#" class="nav-btn" onclick="switchTab(event, 'education')">FAMILY AND FRIENDS</a>
         </div>
 
         <button class="theme-toggle-btn" id="theme-btn" onclick="cycleTheme()" title="Switch Theme">🎨 Theme</button>
@@ -37,8 +36,10 @@
 
         <!-- LEFT COLUMN: PHOTO -->
         <div class="left-col">
-            <div class="about-image">
-                <img src="images/photo.jpg" alt="Robert Dean C. Kiwang" onerror="this.src='https://via.placeholder.com/300/1e293b/ffffff?text=Robert+Dean'">
+            <div class="left-column-content">
+                <div class="about-image">
+                    <img src="images/photo.jpg" alt="Robert Dean C. Kiwang" onerror="this.src='https://via.placeholder.com/300/1e293b/ffffff?text=Robert+Dean'">
+                </div>
             </div>
         </div>
 
@@ -135,7 +136,7 @@
                         </div>
                         <div class="card-content-box">
                             <h3 class="card-title">PRIVATELY SPONSORED GOLF ATHLETE</h3>
-                            <p class="card-description">Participated in golf as a privately sponsored athlete, developing discipline, sportsmanship, and athletic skills.</p>
+                            <p class="card-description">Recognized and supported by private sponsors throughout my golfing journey, developing discipline, sportsmanship, and athletic skills.</p>
                         </div>
                     </article>
 
@@ -172,53 +173,22 @@
                 <!-- SECTION DIVIDER -->
                 <div class="section-divider"></div>
 
-                <!-- 2. CERTIFICATES SECTION HEADER -->
-                <div class="achievements-header-row">
-                    <h2 class="section-main-title">CERTIFICATES &amp; CREDENTIALS</h2>
-                </div>
+                <button class="folder-button education-folder" type="button" onclick="openPortfolioDialog('education-dialog')" aria-haspopup="dialog">
+                    <span class="folder-icon education-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path class="folder-shape" d="M5 13.5A3.5 3.5 0 0 1 8.5 10h10l4 4H39a4 4 0 0 1 4 4v17a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V13.5Z"/><path class="folder-line" d="M6 19h36"/><path class="folder-detail" d="m24 24 10 4-10 4-10-4 10-4Z"/><path class="folder-detail" d="M17.5 30v4c4.2 2.8 8.8 2.8 13 0v-4"/><path class="folder-line" d="M34 28v6"/></svg></span>
+                    <span><strong>Educational Milestones</strong><small>View my academic journey</small></span>
+                    <span class="folder-chevron" aria-hidden="true">↗</span>
+                </button>
+                <!-- Certificates are grouped in a folder that opens on demand. -->
+                <button class="folder-button certificate-folder" type="button" onclick="openPortfolioDialog('certificates-dialog')" aria-haspopup="dialog">
+                    <span class="folder-icon certificate-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path class="folder-shape" d="M5 13.5A3.5 3.5 0 0 1 8.5 10h10l4 4H39a4 4 0 0 1 4 4v17a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V13.5Z"/><path class="folder-line" d="M6 19h36"/><path class="folder-detail" d="m31 24 1.8 3.8 4.2.6-3 2.9.7 4.1-3.7-2-3.7 2 .7-4.1-3-2.9 4.2-.6L31 24Z"/></svg></span>
+                    <span><strong>Certificate and Credentials</strong><small>3 certificates · Tap to view</small></span>
+                    <span class="folder-chevron" aria-hidden="true">↗</span>
+                </button></div>
 
-                <!-- CERTIFICATES GRID (6 Cards) -->
-                <div class="certificate-grid">
-                    
-                    <!-- Certificate 1 -->
-                    <article class="portfolio-card">
-                        <div class="card-media-box">
-                            <img src="images/NC2.jpg" alt="Certificate Title 1" loading="lazy">
-                        </div>
-                        <div class="card-content-box">
-                            <h3 class="card-title">COMPUTER SYSTEMS SERVICING NCII</h3>
-                        </div>
-                    </article>
-
-                    <!-- Certificate 2 -->
-                    <article class="portfolio-card">
-                        <div class="card-media-box">
-                            <img src="images/Codecamp.png" alt="Certificate Title 2" loading="lazy">
-                        </div>
-                        <div class="card-content-box">
-                            <h3 class="card-title">RESPONSIVE WEB DESIGN</h3>
-                        </div>
-                    </article>
-
-                    <!-- Certificate 3 -->
-                    <article class="portfolio-card">
-                        <div class="card-media-box">
-                            <img src="images/thework.png" alt="Certificate Title 3" loading="lazy">
-                        </div>
-                        <div class="card-content-box">
-                            <h3 class="card-title">THE WORK BEHIND THE LUCK</h3>
-                        </div>
-                    </article>
-
-                
-                </div>
-
-            </div>
-
-            <!-- EDUCATION TAB -->
+            <!-- FAMILY AND FRIENDS TAB -->
             <div id="tab-education" class="tab-panel">
-                <div class="eyebrow"><span class="status-dot"></span> EDUCATION</div>
-                <h2 class="panel-title">Academic Background</h2>
+                <div class="eyebrow"><span class="status-dot"></span>FAMILY AND FRIENDS</div>
+                <h2 class="panel-title"></h2>
                 <div class="panel-box">
                     <p>Wait! unfinished pa ito HAHA</p>
                 </div>
@@ -227,6 +197,42 @@
         </div>
 
     </main>
+
+    <!-- EDUCATIONAL MILESTONES POP-UP -->
+    <dialog id="education-dialog" class="portfolio-dialog" aria-labelledby="education-dialog-title">
+        <div class="dialog-header">
+            <div><span class="dialog-kicker">ACADEMIC JOURNEY</span><h2 id="education-dialog-title">Educational Milestones</h2></div>
+            <button type="button" class="dialog-close" onclick="closePortfolioDialog('education-dialog')" aria-label="Close">&times;</button>
+        </div>
+        <ol class="milestone-list">
+            <li><span class="milestone-year">2020</span><div><strong>La Trinidad Elementary School</strong><span>Elementary Graduate</span></div></li>
+            <li><span class="milestone-year">2024</span><div><strong>La Trinidad National High School</strong><span>Junior High Graduate</span></div></li>
+            <li><span class="milestone-year">2026</span><div><strong>Benguet National High School</strong><span>Senior High Graduate</span></div></li>
+            <li class="milestone-current"><span class="milestone-year">NOW</span><div><strong>University of the Cordilleras</strong><span>First-year Bachelor of Science in Computer Science (BSCS)</span></div></li>
+        </ol>
+    </dialog>
+
+    <!-- CERTIFICATES POP-UP -->
+    <dialog id="certificates-dialog" class="portfolio-dialog certificates-dialog" aria-labelledby="certificates-dialog-title">
+        <div class="dialog-header">
+            <div><span class="dialog-kicker">PORTFOLIO</span><h2 id="certificates-dialog-title">Certificate and Credentials</h2></div>
+            <button type="button" class="dialog-close" onclick="closePortfolioDialog('certificates-dialog')" aria-label="Close">&times;</button>
+        </div>
+        <div class="certificate-grid dialog-certificate-grid">
+            <article class="portfolio-card">
+                <div class="card-media-box"><img src="images/NC2.jpg" alt="Computer Systems Servicing NCII certificate" loading="lazy"></div>
+                <div class="card-content-box"><h3 class="card-title">COMPUTER SYSTEMS SERVICING NCII</h3></div>
+            </article>
+            <article class="portfolio-card">
+                <div class="card-media-box"><img src="images/Codecamp.png" alt="Responsive Web Design certificate" loading="lazy"></div>
+                <div class="card-content-box"><h3 class="card-title">RESPONSIVE WEB DESIGN</h3></div>
+            </article>
+            <article class="portfolio-card">
+                <div class="card-media-box"><img src="images/thework.png" alt="The Work Behind the Luck certificate" loading="lazy"></div>
+                <div class="card-content-box"><h3 class="card-title">THE WORK BEHIND THE LUCK</h3></div>
+            </article>
+        </div>
+    </dialog>
 
     <!-- LIGHTBOX MODAL VIEWER -->
     <div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
