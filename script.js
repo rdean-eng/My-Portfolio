@@ -253,6 +253,7 @@ function openLightbox(imgSrc, captionText) {
         modalImg.src = imgSrc;
         modalCaption.textContent = captionText || 'Achievement / Certificate';
         modal.classList.add('active');
+        if (!modal.open) modal.showModal();
     }
 }
 
@@ -261,6 +262,7 @@ function closeLightbox() {
     const modalImg = document.getElementById('lightbox-img');
     if (modal) {
         modal.classList.remove('active');
+        if (modal.open) modal.close();
         if (modalImg) modalImg.src = ''; // Clear source on close to prevent ghost previews
     }
 }

@@ -235,13 +235,13 @@
     </dialog>
 
     <!-- LIGHTBOX MODAL VIEWER -->
-    <div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
+    <dialog id="lightbox-modal" class="lightbox-modal" onclick="if (event.target === this) closeLightbox()">
         <div class="lightbox-content" onclick="event.stopPropagation()">
             <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
             <img id="lightbox-img" src="" alt="Expanded View">
             <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
-    </div>
+    </dialog>
 
     <!-- FOOTER -->
     <footer class="page-footer">
