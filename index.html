@@ -53,7 +53,7 @@
                     WELCOME TO MY SPACE
                 </div>
 
-                <h1 class="hero-name">ROBERT DEAN C. KIWANG</h1>
+                <h1 class="hero-name cyber-glitch">ROBERT DEAN C. KIWANG</h1>
 
                 <div class="badge-group">
                     <span class="badge">BSCS | Developer</span>
@@ -67,24 +67,12 @@
                     Welcome to my portfolio! Here you can explore my career path, key achievements, programming skills, educational background, and personal journey.
                 </p>
 
-                <div class="info-pill-container">
-                    <div class="info-pill">
-                        <span class="pill-label">EMAIL:</span>
-                        <a href="mailto:rdwangki@gmail.com?subject=Hello%20Robert&body=Hi%20Robert,%20I%20saw%20your%20portfolio%20and..." class="pill-value">rdwangki@gmail.com</a>
-                    </div>
-                    <div class="info-pill">
-                        <span class="pill-label">CONTACT:</span>
-                        <span class="pill-value">09123456789</span>
-                    </div>
-                </div>
-
                 <div class="page-navigation">
                      <button id="next-btn" onclick="navigateTab(1)">
                       Personal Information →
                      </button>
                 </div>
             </div>
-
             <!-- ABOUT TAB -->
             <div id="tab-about" class="tab-panel">
                 <div class="about-top-row">
@@ -94,7 +82,7 @@
                         <button class="about-achievements-button" type="button" onclick="switchTab(null, 'achievements')">Achievements →</button>
                     </div>
                 </div>
-                <h2 class="panel-title">Passionate Developer & Learner</h2>
+                <h2 class="panel-title cyber-glitch">Passionate Developer & Learner</h2>
                 <div class="panel-box">
                     <p>I am a Computer Science student at the University of the Cordilleras passionate about continuous learning and exploring different fields of technology, from full-stack development and cybersecurity to game development. I strive to build practical skills, take on new challenges, and grow as a versatile developer.</p>
                     <div class="profile-facts" aria-label="Personal details">
@@ -111,9 +99,14 @@
                         <p><strong>Height</strong><span>168.5 cm</span></p>
                         <p><strong>Weight</strong><span>78 kg</span></p>
                     </div>
-                    <span class="connect-label">CONNECT WITH ME:</span>
-                    <a href="https://github.com/rdean-eng" target="_blank" class="social-btn">GITHUB ↗</a>
-                    <a href="https://www.facebook.com/share/1D45oyLNbm/" class="social-btn">FACEBOOK ↗</a>
+                    <div class="connect-block">
+                        <span class="connect-label">CONNECT WITH ME</span>
+                        <div class="social-row">
+                            <a href="mailto:rdwangki@gmail.com?subject=Hello%20Robert&body=Hi%20Robert,%20I%20saw%20your%20portfolio%20and..." class="social-btn">EMAIL ↗</a>
+                            <a href="https://github.com/rdean-eng" target="_blank" rel="noopener noreferrer" class="social-btn">GITHUB ↗</a>
+                            <a href="https://www.facebook.com/share/1D45oyLNbm/" class="social-btn">FACEBOOK ↗</a>
+                        </div>
+                    </div>
                 </div> 
             </div>
 
@@ -122,8 +115,11 @@
                 
                 <!-- TOP HEADER ROW -->
                 <div class="achievements-header-row">
-                    <a href="#" class="back-link" onclick="switchTab(event, 'about')">← BACK TO PERSONAL INFORMATION</a>
-                    <h2 class="section-main-title">ACHIEVEMENTS &amp; EXTRACURRICULAR ACTIVITIES</h2>
+                    <div class="achievement-header-actions">
+                        <a href="#" class="back-link" onclick="switchTab(event, 'about')">← BACK TO PERSONAL INFORMATION</a>
+                        <button type="button" class="about-achievements-button" onclick="switchTab(null, 'education')">Family and Friends →</button>
+                    </div>
+                    <h2 class="section-main-title cyber-glitch">ACHIEVEMENTS &amp; MILESTONES</h2>
                 </div>
 
                 <!-- 1. ACHIEVEMENTS GRID (3 Cards) -->
@@ -170,21 +166,42 @@
 
                 </div>
 
-                <!-- SECTION DIVIDER -->
-                <div class="section-divider"></div>
+                <div class="achievement-details-grid">
+                    <section class="achievement-section education-section" aria-labelledby="education-section-title">
+                        <div class="achievement-section-heading">
+                            <span class="section-kicker">ACADEMIC JOURNEY</span>
+                            <h3 id="education-section-title" class="cyber-glitch">Educational Milestones</h3>
+                        </div>
+                        <ol class="milestone-list">
+                            <li><span class="milestone-year">2020</span><div><strong>La Trinidad Elementary School</strong><span>Elementary Graduate</span></div></li>
+                            <li><span class="milestone-year">2024</span><div><strong>La Trinidad National High School</strong><span>Junior High Graduate</span></div></li>
+                            <li><span class="milestone-year">2026</span><div><strong>Benguet National High School</strong><span>Senior High Graduate</span></div></li>
+                            <li class="milestone-current"><span class="milestone-year">NOW</span><div><strong>University of the Cordilleras</strong><span>First-year Bachelor of Science in Computer Science (BSCS)</span></div></li>
+                        </ol>
+                    </section>
 
-                <button class="folder-button education-folder" type="button" onclick="openPortfolioDialog('education-dialog')" aria-haspopup="dialog">
-                    <span class="folder-icon education-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path class="folder-shape" d="M5 13.5A3.5 3.5 0 0 1 8.5 10h10l4 4H39a4 4 0 0 1 4 4v17a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V13.5Z"/><path class="folder-line" d="M6 19h36"/><path class="folder-detail" d="m24 24 10 4-10 4-10-4 10-4Z"/><path class="folder-detail" d="M17.5 30v4c4.2 2.8 8.8 2.8 13 0v-4"/><path class="folder-line" d="M34 28v6"/></svg></span>
-                    <span><strong>Educational Milestones</strong><small>View my academic journey</small></span>
-                    <span class="folder-chevron" aria-hidden="true">↗</span>
-                </button>
-                <!-- Certificates are grouped in a folder that opens on demand. -->
-                <button class="folder-button certificate-folder" type="button" onclick="openPortfolioDialog('certificates-dialog')" aria-haspopup="dialog">
-                    <span class="folder-icon certificate-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path class="folder-shape" d="M5 13.5A3.5 3.5 0 0 1 8.5 10h10l4 4H39a4 4 0 0 1 4 4v17a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V13.5Z"/><path class="folder-line" d="M6 19h36"/><path class="folder-detail" d="m31 24 1.8 3.8 4.2.6-3 2.9.7 4.1-3.7-2-3.7 2 .7-4.1-3-2.9 4.2-.6L31 24Z"/></svg></span>
-                    <span><strong>Certificate and Credentials</strong><small>3 certificates · Tap to view</small></span>
-                    <span class="folder-chevron" aria-hidden="true">↗</span>
-                </button></div>
-
+                    <section class="achievement-section certificates-section" aria-labelledby="certificates-section-title">
+                        <div class="achievement-section-heading">
+                            <span class="section-kicker">CERTIFICATIONS &amp; CREDENTIALS</span>
+                            <h3 id="certificates-section-title" class="cyber-glitch">Certificates</h3>
+                        </div>
+                        <div class="certificate-grid">
+                            <article class="portfolio-card">
+                                <div class="card-media-box"><img src="images/NC2.jpg" alt="Computer Systems Servicing NCII certificate" loading="lazy"></div>
+                                <div class="card-content-box"><h3 class="card-title">COMPUTER SYSTEMS SERVICING NCII</h3></div>
+                            </article>
+                            <article class="portfolio-card">
+                                <div class="card-media-box"><img src="images/Codecamp.png" alt="Responsive Web Design certificate" loading="lazy"></div>
+                                <div class="card-content-box"><h3 class="card-title">RESPONSIVE WEB DESIGN</h3></div>
+                            </article>
+                            <article class="portfolio-card">
+                                <div class="card-media-box"><img src="images/thework.png" alt="The Work Behind the Luck certificate" loading="lazy"></div>
+                                <div class="card-content-box"><h3 class="card-title">THE WORK BEHIND THE LUCK</h3></div>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+            </div>
             <!-- FAMILY AND FRIENDS TAB -->
             <div id="tab-education" class="tab-panel">
                 <div class="eyebrow"><span class="status-dot"></span>FAMILY AND FRIENDS</div>
@@ -197,42 +214,6 @@
         </div>
 
     </main>
-
-    <!-- EDUCATIONAL MILESTONES POP-UP -->
-    <dialog id="education-dialog" class="portfolio-dialog" aria-labelledby="education-dialog-title">
-        <div class="dialog-header">
-            <div><span class="dialog-kicker">ACADEMIC JOURNEY</span><h2 id="education-dialog-title">Educational Milestones</h2></div>
-            <button type="button" class="dialog-close" onclick="closePortfolioDialog('education-dialog')" aria-label="Close">&times;</button>
-        </div>
-        <ol class="milestone-list">
-            <li><span class="milestone-year">2020</span><div><strong>La Trinidad Elementary School</strong><span>Elementary Graduate</span></div></li>
-            <li><span class="milestone-year">2024</span><div><strong>La Trinidad National High School</strong><span>Junior High Graduate</span></div></li>
-            <li><span class="milestone-year">2026</span><div><strong>Benguet National High School</strong><span>Senior High Graduate</span></div></li>
-            <li class="milestone-current"><span class="milestone-year">NOW</span><div><strong>University of the Cordilleras</strong><span>First-year Bachelor of Science in Computer Science (BSCS)</span></div></li>
-        </ol>
-    </dialog>
-
-    <!-- CERTIFICATES POP-UP -->
-    <dialog id="certificates-dialog" class="portfolio-dialog certificates-dialog" aria-labelledby="certificates-dialog-title">
-        <div class="dialog-header">
-            <div><span class="dialog-kicker">PORTFOLIO</span><h2 id="certificates-dialog-title">Certificate and Credentials</h2></div>
-            <button type="button" class="dialog-close" onclick="closePortfolioDialog('certificates-dialog')" aria-label="Close">&times;</button>
-        </div>
-        <div class="certificate-grid dialog-certificate-grid">
-            <article class="portfolio-card">
-                <div class="card-media-box"><img src="images/NC2.jpg" alt="Computer Systems Servicing NCII certificate" loading="lazy"></div>
-                <div class="card-content-box"><h3 class="card-title">COMPUTER SYSTEMS SERVICING NCII</h3></div>
-            </article>
-            <article class="portfolio-card">
-                <div class="card-media-box"><img src="images/Codecamp.png" alt="Responsive Web Design certificate" loading="lazy"></div>
-                <div class="card-content-box"><h3 class="card-title">RESPONSIVE WEB DESIGN</h3></div>
-            </article>
-            <article class="portfolio-card">
-                <div class="card-media-box"><img src="images/thework.png" alt="The Work Behind the Luck certificate" loading="lazy"></div>
-                <div class="card-content-box"><h3 class="card-title">THE WORK BEHIND THE LUCK</h3></div>
-            </article>
-        </div>
-    </dialog>
 
     <!-- LIGHTBOX MODAL VIEWER -->
     <dialog id="lightbox-modal" class="lightbox-modal" onclick="if (event.target === this) closeLightbox()">
