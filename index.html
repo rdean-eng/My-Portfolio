@@ -29,7 +29,7 @@
     </header>
 
     <!-- MAIN FIXED CONTENT AREA -->
-    <main class="hero">
+    <main class="hero home-profile-layout">
 
         <div class="background-glow glow-one"></div>
         <div class="background-glow glow-two"></div>
@@ -38,7 +38,7 @@
         <div class="left-col">
             <div class="left-column-content">
                 <div class="about-image">
-                    <img src="images/photo.jpg" alt="Robert Dean C. Kiwang" onerror="this.src='https://via.placeholder.com/300/1e293b/ffffff?text=Robert+Dean'">
+                    <img src="images/profile.png" alt="Robert Dean C. Kiwang" onerror="this.src='https://via.placeholder.com/300/1e293b/ffffff?text=Robert+Dean'">
                 </div>
             </div>
         </div>
@@ -48,28 +48,27 @@
 
             <!-- HOME TAB -->
             <div id="tab-home" class="tab-panel active">
-                <div class="eyebrow">
-                    <span class="status-dot"></span>
-                    WELCOME TO MY SPACE
-                </div>
+                <div class="eyebrow home-eyebrow">ROBERT DEAN <span class="home-kicker-slash">/</span>PORTFOLIO</div>
 
-                <h1 class="hero-name cyber-glitch">ROBERT DEAN C. KIWANG</h1>
+                <h1 class="hero-name cyber-glitch"><span>ROBERT DEAN</span><span class="name-accent">C. KIWANG</span></h1>
 
                 <div class="badge-group">
-                    <span class="badge">BSCS | Developer</span>
+                    <span class="badge">COMPUTER SCIENCE</span>
+                    <span class="badge">DEVELOPER</span>
+                    <span class="badge">LIFELONG LEARNER</span>
                 </div>
 
-                <p class="hero-subtext">
-                    BACHELOR OF SCIENCE IN COMPUTER SCIENCE STUDENT
-                </p>
+                <p class="hero-subtext">BACHELOR OF SCIENCE IN COMPUTER SCIENCE</p>
+
+                <p class="home-tagline">Building ideas into something real.</p>
 
                 <p class="hero-description">
-                    Welcome to my portfolio! Here you can explore my career path, key achievements, programming skills, educational background, and personal journey.
+                    I’m Robert, a Computer Science student exploring software development, cybersecurity, and creative technology. Take a look around my work and the experiences that shape me.
                 </p>
 
                 <div class="page-navigation">
-                     <button id="next-btn" onclick="navigateTab(1)">
-                      Personal Information →
+                     <button id="next-btn" onclick="navigateTab(1)" class="home-cta">
+                      MY PERSONAL INFORMATION <span aria-hidden="true">›</span>
                      </button>
                 </div>
             </div>
@@ -87,20 +86,28 @@
                     <p>I am a Computer Science student at the University of the Cordilleras passionate about continuous learning and exploring different fields of technology, from full-stack development and cybersecurity to game development. I strive to build practical skills, take on new challenges, and grow as a versatile developer.</p>
                     <div class="profile-facts" aria-label="Personal details">
                         <p><strong>Birthday</strong><span>April 26, 2008</span></p>
+                        <p><strong>Birthplace</strong><span>Baguio City</span></p>
                         <p><strong>Age</strong><span>18</span></p>
                         <p><strong>Location</strong><span>La Trinidad, Benguet, Philippines</span></p>
                         <p><strong>College</strong><span>University of the Cordilleras</span></p>
                         <p><strong>Year Level</strong><span>1st Year</span></p>
                         <p class="fact-wide"><strong>Hobbies</strong><span>Continuous Learning, Self-Improvement, Personal Development</span></p>
-                        <p class="fact-wide"><strong>Skills</strong><span>HTML, CSS, JavaScript, React, Python, Java</span></p>
+                        <p class="fact-wide"><strong>Skills</strong><span>HTML, CSS, JavaScript, React, Python, Java, Bash, Networking</span></p>
+                        <p class="fact-wide"><strong>Career Interests</strong><span>Cybersecurity, Full-Stack Web Development, Software Engineering, Reverse Engineering</span></p>
                         <p><strong>Status</strong><span>Single</span></p>
-                        <p><strong>Criminal Record</strong><span>None</span></p>
                         <p><strong>Gender</strong><span>Male</span></p>
                         <p><strong>Height</strong><span>168.5 cm</span></p>
                         <p><strong>Weight</strong><span>78 kg</span></p>
+                        <p><strong>Blood Type</strong><span>B+</span></p>
+                        <p><strong>Nationality</strong><span>Filipino</span></p>
+                        <p><strong>Eye Color</strong><span>Brown</span></p>
+                        <p><strong>Occupation</strong><span>Student</span></p>
+                        <p class="fact-wide"><strong>Languages</strong><span>Filipino, English, Ilocano, Kankanaey</span></p>
+                        <p><strong>Religion</strong><span>Roman Catholic</span></p>
                     </div>
                     <div class="connect-block">
                         <span class="connect-label">CONNECT WITH ME</span>
+                        <span class="connect-phone"><strong>CONTACT NUMBER</strong><span>09691714989</span></span>
                         <div class="social-row">
                             <a href="mailto:rdwangki@gmail.com?subject=Hello%20Robert&body=Hi%20Robert,%20I%20saw%20your%20portfolio%20and..." class="social-btn">EMAIL ↗</a>
                             <a href="https://github.com/rdean-eng" target="_blank" rel="noopener noreferrer" class="social-btn">GITHUB ↗</a>
@@ -203,11 +210,50 @@
                 </div>
             </div>
             <!-- FAMILY AND FRIENDS TAB -->
-            <div id="tab-education" class="tab-panel">
-                <div class="eyebrow"><span class="status-dot"></span>FAMILY AND FRIENDS</div>
-                <h2 class="panel-title"></h2>
-                <div class="panel-box">
-                    <p>Wait! unfinished pa ito HAHA</p>
+            <div id="tab-education" class="tab-panel family-panel">
+                <div class="family-heading">
+                    <div>
+                        <div class="eyebrow"><span class="status-dot"></span> MY PEOPLE, MY STORY</div>
+                        <h2 class="family-title cyber-glitch"><button class="family-title-link active" type="button" aria-pressed="true" onclick="showFamilySection('family')">Family</button> <span>&amp;</span> <button class="family-title-link" type="button" aria-pressed="false" onclick="showFamilySection('friends')">Friends</button><span class="family-click-cue" aria-hidden="true">♡ click me ✦</span></h2>
+                    </div>
+                    <div class="family-heading-actions">
+                        <p class="family-intro">The people who make every milestone meaningful and every ordinary day a little brighter.</p>
+                        <button id="family-autoplay-toggle" class="family-autoplay-toggle" type="button" aria-pressed="false" onclick="toggleFamilyAutoplay()">Ⅱ Pause</button>
+                    </div>
+                </div>
+                <div class="family-gallery-stage">
+                <div id="family-section" class="family-gallery family-view active" aria-label="Family photo gallery">
+                    <figure class="family-photo family-photo-feature" data-lightbox="true">
+                        <img src="images/father.jpg" alt="Robert with his father" loading="lazy">
+                        <figcaption><span>01 / FATHER</span><strong>Roots of Resilience</strong><p>His guidance and example remind me to keep moving forward.</p></figcaption>
+                    </figure>
+                    <figure class="family-photo family-photo-mother" data-lightbox="true">
+                        <img src="images/mother.jpg" alt="Robert with his mother" loading="lazy">
+                        <figcaption><span>02 / MOTHER</span><strong>The Heart of Home</strong><p>Her care and encouragement make every goal feel possible.</p></figcaption>
+                    </figure>
+                    <figure class="family-photo family-photo-siblings" data-lightbox="true">
+                        <img src="images/siblings.jpg" alt="Robert with his siblings" loading="lazy">
+                        <figcaption><span>03 / SIBLINGS</span><strong>Built-in Best Friends</strong><p>Through every chapter, we’ve had each other’s backs always family, always friends.</p></figcaption>
+                    </figure>
+                </div>
+                <div id="friends-section" class="family-gallery family-view friends-view" aria-label="Friends photo gallery" hidden>
+                    <figure class="family-photo family-photo-friends" data-lightbox="true">
+                        <img src="images/friends.jpg" alt="Robert spending time with friends" loading="lazy">
+                        <figcaption><span>04 / FRIENDS</span><strong>Better Together</strong><p>Laughs and good conversations make the journey brighter.</p></figcaption>
+                    </figure>
+                    <figure class="family-photo family-photo-friends-two" data-lightbox="true">
+                        <img src="images/friends1.jpg" alt="Robert and friends making memories" loading="lazy">
+                        <figcaption><span>05 / FRIENDS</span><strong>Memories in the Making</strong><p>Good friends turn ordinary days into stories worth keeping.</p></figcaption>
+                    </figure>
+                    <figure class="family-photo family-photo-brother-one" data-lightbox="true">
+                        <img src="images/bro1.jpg" alt="Robert with his brother" loading="lazy">
+                        <figcaption><span>06 / GYMBROS</span><strong>Always in My Corner</strong><p>Grateful for a brother who makes every moment better.</p></figcaption>
+                    </figure>
+                    <figure class="family-photo family-photo-brother-two" data-lightbox="true">
+                        <img src="images/bro2.jpg" alt="Robert spending time with his brother" loading="lazy">
+                        <figcaption><span>07 / GYMBROS</span><strong>Brothers for Life</strong><p>A bond built on shared stories, support, and plenty of laughs.</p></figcaption>
+                    </figure>
+                </div>
                 </div>
             </div>
 

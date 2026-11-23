@@ -47,11 +47,13 @@ const tabs = [
     "home",
     "about",
     "achievements",
-    "education",
-    "family"
+    "education"
 ];
 
 let currentTabIndex = 0;
+let familySwitchTimer = null;
+let familyAutoplayPaused = false;
+let familyTransitionTimer = null;
 
 function switchTab(event, tabId) {
 
@@ -92,19 +94,105 @@ function switchTab(event, tabId) {
         selectedTab.classList.add('active');
     }
 
-    // CONTROL PROFILE PHOTO VISIBILITY
-    // Hides the left column photo specifically on the achievements tab
+    // Hide the profile on personal, achievements, and family pages.
     const heroSection = document.querySelector('.hero');
     if (heroSection) {
-        if (tabId === 'achievements') {
+        if (['achievements', 'about', 'education'].includes(tabId)) {
             heroSection.classList.add('hide-photo');
         } else {
             heroSection.classList.remove('hide-photo');
         }
+        heroSection.classList.toggle('home-profile-layout', tabId === 'home');
+    }
+
+    if (tabId === 'education') {
+        scheduleFamilySwitch(3000);
+    } else {
+        clearTimeout(familySwitchTimer);
+        familySwitchTimer = null;
+        clearTimeout(familyTransitionTimer);
+        familyTransitionTimer = null;
+        document.querySelectorAll('.family-view.is-transitioning-out').forEach(view => {
+            view.hidden = true;
+            view.classList.remove('is-transitioning-out');
+        });
+        document.querySelectorAll('.family-view.is-transitioning-in').forEach(view => view.classList.remove('is-transitioning-in'));
     }
 
     // Update Previous and Continue buttons
     updateNavigationButtons();
+}
+
+function scheduleFamilySwitch(delay) {
+    clearTimeout(familySwitchTimer);
+    familySwitchTimer = null;
+    if (currentTabIndex !== tabs.indexOf('education') || familyAutoplayPaused) return;
+
+    familySwitchTimer = setTimeout(() => {
+        const activeSection = document.querySelector('.family-view.active');
+        const nextSection = activeSection?.id === 'family-section' ? 'friends' : 'family';
+        showFamilySection(nextSection);
+    }, delay);
+}
+
+function toggleFamilyAutoplay() {
+    familyAutoplayPaused = !familyAutoplayPaused;
+    const button = document.getElementById('family-autoplay-toggle');
+    if (button) {
+        button.textContent = familyAutoplayPaused ? '▶ Play' : 'Ⅱ Pause';
+        button.setAttribute('aria-pressed', String(familyAutoplayPaused));
+        button.setAttribute('aria-label', familyAutoplayPaused ? 'Resume automatic Family and Friends switching' : 'Pause automatic Family and Friends switching');
+    }
+
+    if (familyAutoplayPaused) {
+        clearTimeout(familySwitchTimer);
+        familySwitchTimer = null;
+    } else {
+        scheduleFamilySwitch(3000);
+    }
+}
+
+function positionFamilyClickCue(selectedSection) {
+    const cue = document.querySelector('.family-click-cue');
+    const targetButton = document.querySelector(`.family-title-link[onclick*="'${selectedSection === 'family' ? 'friends' : 'family'}'"]`);
+    if (cue && targetButton) targetButton.insertAdjacentElement('afterend', cue);
+}
+
+function showFamilySection(section) {
+    const targetView = document.getElementById(`${section}-section`);
+    const currentView = document.querySelector('.family-view.active');
+
+    clearTimeout(familyTransitionTimer);
+    document.querySelectorAll('.family-view.is-transitioning-out').forEach(view => {
+        view.hidden = true;
+        view.classList.remove('is-transitioning-out');
+    });
+
+    if (targetView && targetView !== currentView) {
+        if (currentView) {
+            currentView.classList.remove('active');
+            currentView.classList.add('is-transitioning-out');
+        }
+        targetView.hidden = false;
+        targetView.classList.add('active', 'is-transitioning-in');
+        requestAnimationFrame(() => targetView.classList.remove('is-transitioning-in'));
+        if (currentView) {
+            familyTransitionTimer = setTimeout(() => {
+                currentView.hidden = true;
+                currentView.classList.remove('is-transitioning-out');
+                familyTransitionTimer = null;
+            }, 3000);
+        }
+    }
+
+    document.querySelectorAll('.family-title-link').forEach(button => {
+        const active = button.textContent.trim().toLowerCase() === section;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+    });
+
+    positionFamilyClickCue(section);
+    scheduleFamilySwitch(3000);
 }
 
 
@@ -234,10 +322,8 @@ if (canvas) {
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Set initial button states
-    updateNavigationButtons();
-
+    // Reapply the initial tab state so the home layout and navigation stay in sync.
+    switchTab(null, 'home');
 });
 
 // ==========================================
@@ -268,8 +354,8 @@ function closeLightbox() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Bind click events to every image inside card media boxes
-    document.querySelectorAll('.card-media-box img').forEach(img => {
+    // Bind click events to achievement and profile images.
+    document.querySelectorAll('.card-media-box img, .about-image img').forEach(img => {
         img.addEventListener('click', (e) => {
             e.stopPropagation();
 
@@ -281,12 +367,24 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ensure we grab the actual image source and card title
             const imgSrc = img.getAttribute('src') || img.src;
             const card = img.closest('.portfolio-card');
-            const titleEl = card ? card.querySelector('.card-title') : null;
+            const titleEl = card ? card.querySelector('.card-title') : img.closest('.family-photo')?.querySelector('figcaption strong');
             const caption = titleEl ? titleEl.textContent.trim() : (img.alt || 'View');
 
             if (imgSrc) {
                 openLightbox(imgSrc, caption);
             }
+        });
+    });
+
+    // Make the entire family/friends photo card open its image, including the caption area.
+    document.querySelectorAll('.family-photo').forEach(photo => {
+        photo.addEventListener('click', () => {
+            const img = photo.querySelector('img');
+            if (!img?.complete || img.naturalWidth === 0) return;
+
+            const imgSrc = img.getAttribute('src') || img.src;
+            const caption = photo.querySelector('figcaption strong')?.textContent.trim() || img.alt || 'View';
+            if (imgSrc) openLightbox(imgSrc, caption);
         });
     });
 
