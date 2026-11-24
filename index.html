@@ -5,40 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robert Dean C. Kiwang | Developer Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <noscript><style>.tab-panel { display: block; margin-bottom: 3rem; } .left-col { display: none !important; } .hero.home-profile-layout { display: block; }</style></noscript>
 </head>
 <body class="theme-midnight">
 
-    <!-- MATRIX CANVAS BACKGROUND -->
-    <canvas id="matrix-canvas"></canvas>
+    <div class="ambient-scene" aria-hidden="true">
+        <span class="ambient-orb orb-a"></span>
+        <span class="ambient-orb orb-b"></span>
+        <span class="code-column code-column-a">0101<br>&gt;_<br>1010<br>0110<br>ROOT<br>1001<br>0101</span>
+        <span class="code-column code-column-b">&lt;/&gt;<br>1011<br>0100<br>sudo<br>0110<br>0101</span>
+        <span class="ambient-scanline"></span>
+    </div>
+    <div id="intro-screen" class="intro-screen" aria-hidden="true">
+        <div class="intro-card">
+            <span class="intro-mark"><span class="prompt-mark">&gt;_</span> RD<span>.</span></span>
+            <div class="intro-logs"><span>&gt; initializing portfolio interface</span><span>&gt; loading modules <i>OK</i></span><span>&gt; access granted<span class="cursor">_</span></span></div>
+            <span class="intro-progress"><i></i></span>
+        </div>
+    </div>
 
     <!-- HEADER / NAVIGATION BAR -->
     <header class="navbar">
-        <a href="#" class="logo">
+        <a href="#home" class="logo" data-go="home" aria-label="Robert Kiwang portfolio home">
             <span class="logo-icon">&lt;/&gt;</span>
             Portfolio<span class="accent">.</span>
         </a>
        
-        <div class="nav-links">
-            <a href="#" class="nav-btn active" onclick="switchTab(event, 'home')">HOME</a>
-            <a href="#" class="nav-btn" onclick="switchTab(event, 'about')">PERSONAL INFORMATION</a>
-            <a href="#" class="nav-btn" onclick="switchTab(event, 'achievements')">ACHIEVEMENTS</a>
-            <a href="#" class="nav-btn" onclick="switchTab(event, 'education')">FAMILY AND FRIENDS</a>
-        </div>
+        <nav class="nav-links" aria-label="Portfolio sections">
+            <a href="#home" class="nav-btn active" data-tab="home" aria-current="page">HOME</a>
+            <a href="#about" class="nav-btn" data-tab="about">PERSONAL INFORMATION</a>
+            <a href="#achievements" class="nav-btn" data-tab="achievements">ACHIEVEMENTS</a>
+            <a href="#education" class="nav-btn" data-tab="education">FAMILY & FRIENDS</a>
+        </nav>
+        <button class="theme-toggle-btn" id="theme-btn" type="button" aria-label="Change color theme">◉ THEME</button>
 
-        <button class="theme-toggle-btn" id="theme-btn" onclick="cycleTheme()" title="Switch Theme">🎨 Theme</button>
     </header>
 
-    <!-- MAIN FIXED CONTENT AREA -->
-    <main class="hero home-profile-layout">
-
-        <div class="background-glow glow-one"></div>
-        <div class="background-glow glow-two"></div>
+    <main id="main-content" class="hero home-profile-layout">
 
         <!-- LEFT COLUMN: PHOTO -->
         <div class="left-col">
             <div class="left-column-content">
                 <div class="about-image">
-                    <img src="images/profile.png" alt="Robert Dean C. Kiwang" onerror="this.src='https://via.placeholder.com/300/1e293b/ffffff?text=Robert+Dean'">
+                    <img src="images/profile.png" alt="Portrait of Robert Dean C. Kiwang" fetchpriority="high">
                 </div>
             </div>
         </div>
@@ -47,10 +56,10 @@
         <div class="right-col">
 
             <!-- HOME TAB -->
-            <div id="tab-home" class="tab-panel active">
+            <section id="tab-home" class="tab-panel active" aria-labelledby="home-title">
                 <div class="eyebrow home-eyebrow">ROBERT DEAN <span class="home-kicker-slash">/</span>PORTFOLIO</div>
 
-                <h1 class="hero-name cyber-glitch"><span>ROBERT DEAN</span><span class="name-accent">C. KIWANG</span></h1>
+                <h1 id="home-title" class="hero-name"><span>ROBERT DEAN</span><span class="name-accent">C. KIWANG</span></h1>
 
                 <div class="badge-group">
                     <span class="badge">COMPUTER SCIENCE</span>
@@ -62,47 +71,38 @@
 
                 <p class="home-tagline">Building ideas into something real.</p>
 
-                <p class="hero-description">
-                    I’m Robert, a Computer Science student exploring software development, cybersecurity, and creative technology. Take a look around my work and the experiences that shape me.
-                </p>
-
-                <div class="page-navigation">
-                     <button id="next-btn" onclick="navigateTab(1)" class="home-cta">
-                      MY PERSONAL INFORMATION <span aria-hidden="true">›</span>
-                     </button>
-                </div>
-            </div>
+                <p class="hero-description">I’m Robert, a Computer Science student exploring software development, cybersecurity, and creative technology. Take a look around my work and the experiences that shape me.</p>
+            </section>
             <!-- ABOUT TAB -->
-            <div id="tab-about" class="tab-panel">
+            <section id="tab-about" class="tab-panel" aria-labelledby="about-title">
                 <div class="about-top-row">
                     <div class="eyebrow"><span class="status-dot"></span> PERSONAL INFORMATION</div>
-                    <div class="about-top-actions">
-                        <button class="about-home-button" type="button" onclick="switchTab(null, 'home')">← Home</button>
-                        <button class="about-achievements-button" type="button" onclick="switchTab(null, 'achievements')">Achievements →</button>
-                    </div>
                 </div>
-                <h2 class="panel-title cyber-glitch">Passionate Developer & Learner</h2>
+                <h2 id="about-title" class="panel-title">Curious by nature. Building by practice.</h2>
                 <div class="panel-box">
-                    <p>I am a Computer Science student at the University of the Cordilleras passionate about continuous learning and exploring different fields of technology, from full-stack development and cybersecurity to game development. I strive to build practical skills, take on new challenges, and grow as a versatile developer.</p>
+                    <p>Computer Science student at the University of the Cordilleras, exploring full-stack development, cybersecurity, and game development. I’m building practical skills and growing as a versatile developer.</p>
                     <div class="profile-facts" aria-label="Personal details">
                         <p><strong>Birthday</strong><span>April 26, 2008</span></p>
-                        <p><strong>Birthplace</strong><span>Baguio City</span></p>
                         <p><strong>Age</strong><span>18</span></p>
+                        <p><strong>Birthplace</strong><span>Baguio City</span></p>
                         <p><strong>Location</strong><span>La Trinidad, Benguet, Philippines</span></p>
                         <p><strong>College</strong><span>University of the Cordilleras</span></p>
                         <p><strong>Year Level</strong><span>1st Year</span></p>
                         <p class="fact-wide"><strong>Hobbies</strong><span>Continuous Learning, Self-Improvement, Personal Development</span></p>
                         <p class="fact-wide"><strong>Skills</strong><span>HTML, CSS, JavaScript, React, Python, Java, Bash, Networking</span></p>
                         <p class="fact-wide"><strong>Career Interests</strong><span>Cybersecurity, Full-Stack Web Development, Software Engineering, Reverse Engineering</span></p>
+                        <p class="fact-wide"><strong>Languages</strong><span>Filipino, English, Ilocano, Kankanaey</span></p>
                         <p><strong>Status</strong><span>Single</span></p>
                         <p><strong>Gender</strong><span>Male</span></p>
                         <p><strong>Height</strong><span>168.5 cm</span></p>
                         <p><strong>Weight</strong><span>78 kg</span></p>
+                        <p><strong>BMI</strong><span>27.5 · Overweight</span></p>
+                        <p><strong>Zodiac Sign</strong><span>Taurus</span></p>
                         <p><strong>Blood Type</strong><span>B+</span></p>
                         <p><strong>Nationality</strong><span>Filipino</span></p>
+                        <p><strong>Ethnicity</strong><span>Kankanaey</span></p>
                         <p><strong>Eye Color</strong><span>Brown</span></p>
                         <p><strong>Occupation</strong><span>Student</span></p>
-                        <p class="fact-wide"><strong>Languages</strong><span>Filipino, English, Ilocano, Kankanaey</span></p>
                         <p><strong>Religion</strong><span>Roman Catholic</span></p>
                     </div>
                     <div class="connect-block">
@@ -115,18 +115,14 @@
                         </div>
                     </div>
                 </div> 
-            </div>
+            </section>
 
             <!-- ACHIEVEMENTS & CERTIFICATES TAB -->
-            <div id="tab-achievements" class="tab-panel achievements-scroll-container">
+            <section id="tab-achievements" class="tab-panel achievements-scroll-container" aria-labelledby="achievements-title">
                 
                 <!-- TOP HEADER ROW -->
                 <div class="achievements-header-row">
-                    <div class="achievement-header-actions">
-                        <a href="#" class="back-link" onclick="switchTab(event, 'about')">← BACK TO PERSONAL INFORMATION</a>
-                        <button type="button" class="about-achievements-button" onclick="switchTab(null, 'education')">Family and Friends →</button>
-                    </div>
-                    <h2 class="section-main-title cyber-glitch">ACHIEVEMENTS &amp; MILESTONES</h2>
+                    <h2 id="achievements-title" class="section-main-title">Achievements &amp; milestones</h2>
                 </div>
 
                 <!-- 1. ACHIEVEMENTS GRID (3 Cards) -->
@@ -177,7 +173,7 @@
                     <section class="achievement-section education-section" aria-labelledby="education-section-title">
                         <div class="achievement-section-heading">
                             <span class="section-kicker">ACADEMIC JOURNEY</span>
-                            <h3 id="education-section-title" class="cyber-glitch">Educational Milestones</h3>
+                            <h3 id="education-section-title">Educational milestones</h3>
                         </div>
                         <ol class="milestone-list">
                             <li><span class="milestone-year">2020</span><div><strong>La Trinidad Elementary School</strong><span>Elementary Graduate</span></div></li>
@@ -190,7 +186,7 @@
                     <section class="achievement-section certificates-section" aria-labelledby="certificates-section-title">
                         <div class="achievement-section-heading">
                             <span class="section-kicker">CERTIFICATIONS &amp; CREDENTIALS</span>
-                            <h3 id="certificates-section-title" class="cyber-glitch">Certificates</h3>
+                            <h3 id="certificates-section-title">Certificates</h3>
                         </div>
                         <div class="certificate-grid">
                             <article class="portfolio-card">
@@ -208,21 +204,20 @@
                         </div>
                     </section>
                 </div>
-            </div>
+            </section>
             <!-- FAMILY AND FRIENDS TAB -->
-            <div id="tab-education" class="tab-panel family-panel">
+            <section id="tab-education" class="tab-panel family-panel" aria-labelledby="family-title">
                 <div class="family-heading">
                     <div>
                         <div class="eyebrow"><span class="status-dot"></span> MY PEOPLE, MY STORY</div>
-                        <h2 class="family-title cyber-glitch"><button class="family-title-link active" type="button" aria-pressed="true" onclick="showFamilySection('family')">Family</button> <span>&amp;</span> <button class="family-title-link" type="button" aria-pressed="false" onclick="showFamilySection('friends')">Friends</button><span class="family-click-cue" aria-hidden="true">♡ click me ✦</span></h2>
+                        <h2 id="family-title" class="family-title">Family <span>&amp;</span> friends</h2>
                     </div>
                     <div class="family-heading-actions">
                         <p class="family-intro">The people who make every milestone meaningful and every ordinary day a little brighter.</p>
-                        <button id="family-autoplay-toggle" class="family-autoplay-toggle" type="button" aria-pressed="false" onclick="toggleFamilyAutoplay()">Ⅱ Pause</button>
                     </div>
                 </div>
                 <div class="family-gallery-stage">
-                <div id="family-section" class="family-gallery family-view active" aria-label="Family photo gallery">
+                <div id="family-section" class="family-gallery family-view active" aria-label="Family and friends photo gallery">
                     <figure class="family-photo family-photo-feature" data-lightbox="true">
                         <img src="images/father.jpg" alt="Robert with his father" loading="lazy">
                         <figcaption><span>01 / FATHER</span><strong>Roots of Resilience</strong><p>His guidance and example remind me to keep moving forward.</p></figcaption>
@@ -235,36 +230,22 @@
                         <img src="images/siblings.jpg" alt="Robert with his siblings" loading="lazy">
                         <figcaption><span>03 / SIBLINGS</span><strong>Built-in Best Friends</strong><p>Through every chapter, we’ve had each other’s backs always family, always friends.</p></figcaption>
                     </figure>
-                </div>
-                <div id="friends-section" class="family-gallery family-view friends-view" aria-label="Friends photo gallery" hidden>
-                    <figure class="family-photo family-photo-friends" data-lightbox="true">
-                        <img src="images/friends.jpg" alt="Robert spending time with friends" loading="lazy">
-                        <figcaption><span>04 / FRIENDS</span><strong>Better Together</strong><p>Laughs and good conversations make the journey brighter.</p></figcaption>
-                    </figure>
                     <figure class="family-photo family-photo-friends-two" data-lightbox="true">
                         <img src="images/friends1.jpg" alt="Robert and friends making memories" loading="lazy">
                         <figcaption><span>05 / FRIENDS</span><strong>Memories in the Making</strong><p>Good friends turn ordinary days into stories worth keeping.</p></figcaption>
                     </figure>
-                    <figure class="family-photo family-photo-brother-one" data-lightbox="true">
-                        <img src="images/bro1.jpg" alt="Robert with his brother" loading="lazy">
-                        <figcaption><span>06 / GYMBROS</span><strong>Always in My Corner</strong><p>Grateful for a brother who makes every moment better.</p></figcaption>
-                    </figure>
-                    <figure class="family-photo family-photo-brother-two" data-lightbox="true">
-                        <img src="images/bro2.jpg" alt="Robert spending time with his brother" loading="lazy">
-                        <figcaption><span>07 / GYMBROS</span><strong>Brothers for Life</strong><p>A bond built on shared stories, support, and plenty of laughs.</p></figcaption>
-                    </figure>
                 </div>
                 </div>
-            </div>
+            </section>
 
         </div>
 
     </main>
 
     <!-- LIGHTBOX MODAL VIEWER -->
-    <dialog id="lightbox-modal" class="lightbox-modal" onclick="if (event.target === this) closeLightbox()">
-        <div class="lightbox-content" onclick="event.stopPropagation()">
-            <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+    <dialog id="lightbox-modal" class="lightbox-modal" aria-label="Image preview">
+        <div class="lightbox-content">
+            <button type="button" class="lightbox-close" aria-label="Close image preview">&times;</button>
             <img id="lightbox-img" src="" alt="Expanded View">
             <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
