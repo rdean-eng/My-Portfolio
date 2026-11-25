@@ -19,17 +19,12 @@ function finishIntro() {
     }, 600);
 }
 
-try {
-    if (!reducedMotion && !sessionStorage.getItem('portfolioIntroSeen')) {
-        sessionStorage.setItem('portfolioIntroSeen', 'yes');
-        introScreen?.classList.add('is-visible');
-        introScreen?.setAttribute('aria-hidden', 'false');
-        finishIntroTimer = window.setTimeout(finishIntro, 1450);
-    } else if (introScreen) {
-        introScreen.style.display = 'none';
-    }
-} catch {
-    if (introScreen) introScreen.style.display = 'none';
+if (!reducedMotion && introScreen) {
+    introScreen.classList.add('is-visible');
+    introScreen.setAttribute('aria-hidden', 'false');
+    finishIntroTimer = window.setTimeout(finishIntro, 1450);
+} else if (introScreen) {
+    introScreen.style.display = 'none';
 }
 
 document.addEventListener('keydown', event => {
