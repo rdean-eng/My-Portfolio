@@ -50,6 +50,7 @@ function switchTab(tabId, updateHash = true) {
 
     const main = document.querySelector('main.hero');
     main?.classList.toggle('home-profile-layout', tabId === 'home');
+    document.body.classList.toggle('home-active', tabId === 'home');
     if (updateHash) history.replaceState(null, '', `#${tabId}`);
 }
 

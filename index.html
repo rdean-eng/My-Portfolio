@@ -30,12 +30,10 @@
             <span class="logo-icon">&lt;/&gt;</span>
             Portfolio<span class="accent">.</span>
         </a>
-       
         <nav class="nav-links" aria-label="Portfolio sections">
-            <a href="#home" class="nav-btn active" data-tab="home" aria-current="page">HOME</a>
             <a href="#about" class="nav-btn" data-tab="about">PERSONAL INFORMATION</a>
             <a href="#achievements" class="nav-btn" data-tab="achievements">ACHIEVEMENTS</a>
-            <a href="#education" class="nav-btn" data-tab="education">FAMILY & FRIENDS</a>
+            <a href="#education" class="nav-btn" data-tab="education">FAMILY &amp; FRIENDS</a>
         </nav>
         <button class="theme-toggle-btn" id="theme-btn" type="button" aria-label="Change color theme">◉ THEME</button>
 
@@ -57,26 +55,18 @@
 
             <!-- HOME TAB -->
             <section id="tab-home" class="tab-panel active" aria-labelledby="home-title">
-                <div class="eyebrow home-eyebrow">ROBERT DEAN <span class="home-kicker-slash">/</span>PORTFOLIO</div>
-
                 <h1 id="home-title" class="hero-name"><span>ROBERT DEAN</span><span class="name-accent">C. KIWANG</span></h1>
-
-                <div class="badge-group">
-                    <span class="badge">COMPUTER SCIENCE</span>
-                    <span class="badge">DEVELOPER</span>
-                    <span class="badge">LIFELONG LEARNER</span>
-                </div>
-
-                <p class="hero-subtext">BACHELOR OF SCIENCE IN COMPUTER SCIENCE</p>
-
-                <p class="home-tagline">Building ideas into something real.</p>
-
-                <p class="hero-description">I’m Robert, a Computer Science student exploring software development, cybersecurity, and creative technology. Take a look around my work and the experiences that shape me.</p>
+                <nav class="nav-links home-nav-links" aria-label="Portfolio sections">
+                    <a href="#about" class="nav-btn" data-tab="about">PERSONAL INFORMATION</a>
+                    <a href="#achievements" class="nav-btn" data-tab="achievements">ACHIEVEMENTS</a>
+                    <a href="#education" class="nav-btn" data-tab="education">FAMILY &amp; FRIENDS</a>
+                </nav>
             </section>
             <!-- ABOUT TAB -->
             <section id="tab-about" class="tab-panel" aria-labelledby="about-title">
-                <div class="about-top-row">
+                <div class="about-top-row section-top-row">
                     <div class="eyebrow"><span class="status-dot"></span> PERSONAL INFORMATION</div>
+                    <a href="#home" class="back-home-btn" data-go="home">← BACK TO HOME</a>
                 </div>
                 <h2 id="about-title" class="panel-title">Curious by nature. Building by practice.</h2>
                 <div class="panel-box">
@@ -123,6 +113,7 @@
                 <!-- TOP HEADER ROW -->
                 <div class="achievements-header-row">
                     <h2 id="achievements-title" class="section-main-title">Achievements &amp; milestones</h2>
+                    <a href="#home" class="back-home-btn" data-go="home">← BACK TO HOME</a>
                 </div>
 
                 <!-- 1. ACHIEVEMENTS GRID (3 Cards) -->
@@ -214,6 +205,7 @@
                     </div>
                     <div class="family-heading-actions">
                         <p class="family-intro">The people who make every milestone meaningful and every ordinary day a little brighter.</p>
+                        <a href="#home" class="back-home-btn" data-go="home">← BACK TO HOME</a>
                     </div>
                 </div>
                 <div class="family-gallery-stage">
